@@ -1,12 +1,14 @@
-
 #include "opencv2/core/core.hpp"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/opencv.hpp>
 #include <stdio.h>
+#include <math.h>
 
 #define RED 2
 #define GREEN 1
 #define BLUE 0
+#define FOCAL 910
+#define ACTUAL 210
 
 using namespace cv;
 
@@ -45,7 +47,7 @@ Mat onlyGreen(Mat original){
 	MatIterator_<Vec3b> it, end;
 	for( it = modified.begin<Vec3b>(), end = modified.end<Vec3b>(); it != end; ++it)
 	{
-		if ((*it)[GREEN]-20 > (*it)[RED] && (*it)[GREEN]-20 > (*it)[BLUE] && (*it)[GREEN] > 127){
+		if ((*it)[GREEN] > 200 && (*it)[BLUE] > 200 && (*it)[RED] < 200){
 			(*it)[BLUE] = 0;
 			(*it)[RED] = 0;
 		}else{
@@ -94,7 +96,6 @@ Mat dilation(Mat original, int erosion_size)
 	return modified;
 }
 
-
 //contours
 Mat contours(Mat current, Mat original){
 	vector<vector<Point> > contours;
@@ -103,11 +104,15 @@ Mat contours(Mat current, Mat original){
 	RotatedRect biggestRect;
 	sort(contours.begin(),contours.end(),cmp);
 	Mat newcurr = original.clone();
-	if (contours.size() > 0) {
-		ellipse(newcurr, minAreaRect(contours[0]), Scalar(255,255,255), 6);
-	}
 	if (contours.size() > 1) {
-		ellipse(newcurr, minAreaRect(contours[1]), Scalar(255,255,255), 6);
+		RotatedRect rect1 = minAreaRect(contours[0]);
+		RotatedRect rect2 = minAreaRect(contours[1]);
+		float distanceX = rect1.center.x-rect2.center.x;
+		float distanceY = rect1.center.y-rect2.center.y;
+		float distance = sqrt(pow(distanceX,2)+pow(distanceY,2));
+		float actualDistance = (ACTUAL*FOCAL)/distance;
+		printf("%f mm\n",actualDistance);
+		line(newcurr,rect1.center,rect2.center,Scalar(255,255,255),6);
 	}
 	return newcurr;
 }
