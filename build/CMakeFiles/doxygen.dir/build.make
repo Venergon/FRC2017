@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mbzirc/FRC2017/src
+CMAKE_SOURCE_DIR = /home/sophie/Documents/FRC2017/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mbzirc/FRC2017/build
+CMAKE_BINARY_DIR = /home/sophie/Documents/FRC2017/build
 
 # Utility rule file for doxygen.
 
@@ -60,6 +60,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd /home/mbzirc/FRC2017/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mbzirc/FRC2017/src /home/mbzirc/FRC2017/src /home/mbzirc/FRC2017/build /home/mbzirc/FRC2017/build /home/mbzirc/FRC2017/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sophie/Documents/FRC2017/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sophie/Documents/FRC2017/src /home/sophie/Documents/FRC2017/src /home/sophie/Documents/FRC2017/build /home/sophie/Documents/FRC2017/build /home/sophie/Documents/FRC2017/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

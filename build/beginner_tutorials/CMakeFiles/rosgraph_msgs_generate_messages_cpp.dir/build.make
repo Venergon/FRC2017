@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mbzirc/FRC2017/src
+CMAKE_SOURCE_DIR = /home/sophie/Documents/FRC2017/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mbzirc/FRC2017/build
+CMAKE_BINARY_DIR = /home/sophie/Documents/FRC2017/build
 
 # Utility rule file for rosgraph_msgs_generate_messages_cpp.
 
@@ -56,10 +56,10 @@ beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build: ros
 .PHONY : beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 
 beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
-	cd /home/mbzirc/FRC2017/build/beginner_tutorials && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/sophie/Documents/FRC2017/build/beginner_tutorials && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 
 beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend:
-	cd /home/mbzirc/FRC2017/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mbzirc/FRC2017/src /home/mbzirc/FRC2017/src/beginner_tutorials /home/mbzirc/FRC2017/build /home/mbzirc/FRC2017/build/beginner_tutorials /home/mbzirc/FRC2017/build/beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sophie/Documents/FRC2017/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sophie/Documents/FRC2017/src /home/sophie/Documents/FRC2017/src/beginner_tutorials /home/sophie/Documents/FRC2017/build /home/sophie/Documents/FRC2017/build/beginner_tutorials /home/sophie/Documents/FRC2017/build/beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
 

@@ -1,8 +1,8 @@
-prefix=/home/mbzirc/FRC2017/devel
+prefix=/home/sophie/Documents/FRC2017/devel
 
 Name: beginner_tutorials
 Description: Description of beginner_tutorials
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/mbzirc/FRC2017/devel/lib 
+Libs: -L/home/sophie/Documents/FRC2017/devel/lib 
 Requires: 

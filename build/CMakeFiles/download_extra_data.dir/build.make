@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mbzirc/FRC2017/src
+CMAKE_SOURCE_DIR = /home/sophie/Documents/FRC2017/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mbzirc/FRC2017/build
+CMAKE_BINARY_DIR = /home/sophie/Documents/FRC2017/build
 
 # Utility rule file for download_extra_data.
 
@@ -60,6 +60,6 @@ CMakeFiles/download_extra_data.dir/clean:
 .PHONY : CMakeFiles/download_extra_data.dir/clean
 
 CMakeFiles/download_extra_data.dir/depend:
-	cd /home/mbzirc/FRC2017/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mbzirc/FRC2017/src /home/mbzirc/FRC2017/src /home/mbzirc/FRC2017/build /home/mbzirc/FRC2017/build /home/mbzirc/FRC2017/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sophie/Documents/FRC2017/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sophie/Documents/FRC2017/src /home/sophie/Documents/FRC2017/src /home/sophie/Documents/FRC2017/build /home/sophie/Documents/FRC2017/build /home/sophie/Documents/FRC2017/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/download_extra_data.dir/depend
 
