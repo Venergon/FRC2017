@@ -1,8 +1,0 @@
-prefix=/home/sophie/Documents/FRC2017/install
-
-Name: image_tutorials
-Description: Description of image_tutorials
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/sophie/Documents/FRC2017/install/lib 
-Requires: 

@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class ReceiveUDPPacket extends Command {
+public class SendUDPPacket extends Command {
 
-    public ReceiveUDPPacket() {
+    public SendUDPPacket() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,9 +21,11 @@ public class ReceiveUDPPacket extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putString("Working", "yes");
-    	Robot.udpSubsystem.receivePacket();
+    	SmartDashboard.putString("Working", "send");
+
+    	Robot.udpSubsystem.sendPacket("hello world","10.47.29.234");
     }
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -37,6 +39,6 @@ public class ReceiveUDPPacket extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	SmartDashboard.putString("Working", "no");
+    	SmartDashboard.putString("Working", "Done sending");
     }
 }
