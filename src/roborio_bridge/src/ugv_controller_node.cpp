@@ -18,6 +18,13 @@
 #include "ugv_controller/ugv_controller.h"
 #include "ugv_controller/message.h" //TODO only required because of timestamp struct. this should not be necessary
 
+int result;
+int sock;
+sockaddr_storage addrDest;
+
+
+
+
 namespace ugv_controller
 {
 	class ControllerNode
@@ -450,7 +457,7 @@ void motorCallback(const geometry_msgs::Twist::ConstPtr& msg) {
       std::cout << result << " bytes sent" << std::endl;
 }
 
-int main(int argc, char **argv)
+/*int main(int argc, char **argv)
 {
     result = 0;
     sock = socket(AF_INET, SOCK_DGRAM, 0);
@@ -483,7 +490,7 @@ int main(int argc, char **argv)
     ros::Subscriber sub_motor = nh.subscribe("robot/cmd_vel", 1,
            motorCallback);
     ros::spin();
-}
+}*/
 
 
 int main(int argc, char **argv)
@@ -517,8 +524,11 @@ int main(int argc, char **argv)
 		}
 	}
 
-	delete c;
+  ros::Subscriber sub_motor = nh.subscribe("robot/cmd_vel", 1,
+          motorCallback);
+  ros::spin();
+  delete c;
 
-	return 0;
+  return 0;
 }
 

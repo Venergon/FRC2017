@@ -34,10 +34,6 @@
 #include "ugv_controller/message.h"
 #include "ugv_controller/control_loop.h"
 
-int result;
-int sock;
-sockaddr_storage addrDest;
-
 namespace ugv_controller
 {
 	Controller::Controller(std::string ip) throw (SocketException)
@@ -69,8 +65,8 @@ namespace ugv_controller
 
 		lightsEnabled = true;
 
-		leftLoop = new ControlLoop(0.01, 4.0);
-		rightLoop = new ControlLoop(0.01, 4.0);
+		//leftLoop = new ControlLoop(0.01, 4.0);
+		//rightLoop = new ControlLoop(0.01, 4.0);
 	}
 
 	Controller::~Controller()
@@ -125,19 +121,19 @@ namespace ugv_controller
 		static bool oldEstop = false;
 		stat.estop = (pkt.din & 1) == 1;
 
-		if (!oldEstop && stat.estop) {
+		/*if (!oldEstop && stat.estop) {
 			leftLoop->zeroIntegrator();
 			rightLoop->zeroIntegrator();
-		}
+		}*/
 		oldEstop = stat.estop;
 
 		// Run drive loop
 		struct pkt_cmd_wheel spkt;
 
 		spkt.header.type = PKT_TYPE_WHEEL;
-		spkt.left = leftLoop->doLoop(stat.lVel);
+		/*spkt.left = leftLoop->doLoop(stat.lVel);
 		spkt.right = -rightLoop->doLoop(stat.rVel);
-
+    */
 		sendPacket(&spkt, sizeof(spkt));
 
 		return stat;
@@ -176,8 +172,8 @@ namespace ugv_controller
 
 		sendPacket(&pkt, sizeof(pkt));*/
 
-		leftLoop->setPoint = lVel;
-		rightLoop->setPoint = rVel;
+		/*leftLoop->setPoint = lVel;
+		rightLoop->setPoint = rVel;*/
 	}
 
 	void Controller::setPan(uint16_t speed, int32_t leftLimit, int32_t rightLimit) throw (SocketException)
@@ -228,7 +224,7 @@ namespace ugv_controller
 
 		sendPacket(&pkt, sizeof(pkt));*/
 
-		leftLoop->kp = lp;
+		/*leftLoop->kp = lp;
 		leftLoop->ki = li;
 		leftLoop->kd = ld;
     leftLoop->kffp = lffp;
@@ -240,7 +236,7 @@ namespace ugv_controller
 		rightLoop->kd = rd;
     rightLoop->kffp = rffp;
     rightLoop->kffd = rffd;
-    rightLoop->kffdd = rffdd;
+    rightLoop->kffdd = rffdd;*/
 	}
 
 	void Controller::setLightsEnabled(bool enabled) throw (SocketException)
@@ -260,8 +256,8 @@ namespace ugv_controller
 
 		sendPacket(&pkt, sizeof(pkt));
 
-		leftLoop->dt = 1.0 / hz;
-		rightLoop->dt = 1.0 / hz;
+		/*leftLoop->dt = 1.0 / hz;
+		rightLoop->dt = 1.0 / hz;*/
 	}
 
 	void Controller::setTime(struct timestamp time) throw (SocketException)
