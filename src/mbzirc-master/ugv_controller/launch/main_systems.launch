@@ -1,0 +1,37 @@
+<launch>
+        <include file="$(find ugv_controller)/launch/ugv_controller.launch" />
+
+
+        <!-- vim: set ft=xml noet : -->
+        <!-- example launch script for ArduPilotMega based FCU's -->
+
+        <arg name="fcu_url" default="/dev/ttyPixhawk:921600" />
+        <arg name="gcs_url" default="tcp-l://" />
+        <!--arg name="gcs_url" default="udp://@" /-->
+        <arg name="tgt_system" default="1" />
+        <arg name="tgt_component" default="1" />
+        <arg name="log_output" default="screen" />
+
+        <include file="$(find uav_mavros)/launch/node.launch">
+                <arg name="pluginlists_yaml" value="$(find mavros)/launch/apm_pluginlists.yaml" />
+                <arg name="config_yaml" value="$(find ugv_controller)/config/apm_config.yaml" />
+
+                <arg name="fcu_url" value="$(arg fcu_url)" />
+                <arg name="gcs_url" value="$(arg gcs_url)" />
+                <arg name="tgt_system" value="$(arg tgt_system)" />
+                <arg name="tgt_component" value="$(arg tgt_component)" />
+                <arg name="log_output" value="$(arg log_output)" />
+        </include>
+
+        <node pkg="uav_mavros" type="mavros_configurer.py" name="mavros_configurer_node" output="screen">
+        </node>
+
+
+
+        <include file="$(find ugv_cmd_vel_pipeline)/launch/cmd_vel_pipeline.launch" />
+        <include file="$(find procmon_webbridge)/launch/ugv.launch" />
+
+
+
+</launch>
+

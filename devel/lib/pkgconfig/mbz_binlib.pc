@@ -1,0 +1,8 @@
+prefix=/home/sophie/Documents/FRC2017/devel
+
+Name: mbz_binlib
+Description: Description of mbz_binlib
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/sophie/Documents/FRC2017/devel/lib 
+Requires: 

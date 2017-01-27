@@ -1,0 +1,2 @@
+beginner_tutorials:image_tutorial:mbzirc-master/ugv_controller:roborio_bridge
+-DCATKIN_DEVEL_PREFIX=/home/sophie/Documents/FRC2017/devel -DCMAKE_INSTALL_PREFIX=/home/sophie/Documents/FRC2017/install -G Unix Makefiles

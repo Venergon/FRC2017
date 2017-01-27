@@ -1,0 +1,8 @@
+prefix=/home/sophie/Documents/FRC2017/install
+
+Name: nmea_navsat_driver
+Description: Description of nmea_navsat_driver
+Version: 0.4.2
+Cflags: 
+Libs: -L/home/sophie/Documents/FRC2017/install/lib 
+Requires: 

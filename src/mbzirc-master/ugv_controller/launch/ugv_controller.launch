@@ -1,0 +1,26 @@
+<launch>
+	<node pkg="ugv_controller" type="ugv_controller_node" name="ugv_controller_node" output="screen">
+		<param name="ip_addr" value="192.168.3.35" />
+	<!-- P = proportional, I = integral, D = feed forward -->	
+		<param name="lp" value="2.00" />
+		<param name="li" value="30.00" />
+		<param name="ld" value="0.00" />
+		<param name="lffp" value="4.00" />
+		<param name="lffd" value="15.00" />
+
+		<param name="rp" value="2.00" />
+		<param name="ri" value="30.0" />
+		<param name="rd" value="0.00" />
+		<param name="rffp" value="4.00" />
+		<param name="rffd" value="15.00" />
+
+		<param name="lights_enabled" value="true" />
+		<param name="pan_speed" value="0.0" /> <!-- 0 to 1, arbitrary units -->
+		<param name="publish_hz" value="100" />
+		<param name="cmdvel_timeout" value="0.5" /> <!-- seconds -->
+
+		<param name="max_linear" value="3.0" />
+		<param name="max_angular" value="5.0" />
+	</node>
+</launch>
+

@@ -1,0 +1,8 @@
+prefix=/home/sophie/Documents/FRC2017/install
+
+Name: ugv_controller
+Description: Description of ugv_controller
+Version: 1.0.0
+Cflags: -I/home/sophie/Documents/FRC2017/install/include
+Libs: -L/home/sophie/Documents/FRC2017/install/lib -lugv_controller
+Requires: geometry_msgs roscpp std_msgs nav_msgs

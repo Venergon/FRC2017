@@ -1,0 +1,8 @@
+prefix=/home/sophie/Documents/FRC2017/install
+
+Name: procmon_webbridge
+Description: Description of procmon_webbridge
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/sophie/Documents/FRC2017/install/lib 
+Requires: 
