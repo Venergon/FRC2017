@@ -27,8 +27,14 @@ void motorCallback(const geometry_msgs::Twist::ConstPtr& msg) {
     int sent = write(socket_num,new_msg, msg_length); //strlen = string length
     //result = sendto(sock, msg, msg_length, 0, (sockaddr*)&addrDest,
     //        sizeof(addrDest));
+    
 
     std::cout << new_msg << sent << " bytes sent of " << msg_length << std::endl;
+    char buffer[256];
+    int readResult = -1;
+    while (readResult < 0) {
+        
+    }
 }
 
 // arrow = ->
