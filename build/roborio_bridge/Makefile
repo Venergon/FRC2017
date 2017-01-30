@@ -163,53 +163,29 @@ roborio_bridge/fast:
 	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/build
 .PHONY : roborio_bridge/fast
 
-src/ugv_controller.o: src/ugv_controller.cpp.o
-.PHONY : src/ugv_controller.o
+roborio_bridge_tcp.o: roborio_bridge_tcp.cpp.o
+.PHONY : roborio_bridge_tcp.o
 
 # target to build an object file
-src/ugv_controller.cpp.o:
-	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o
-.PHONY : src/ugv_controller.cpp.o
+roborio_bridge_tcp.cpp.o:
+	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o
+.PHONY : roborio_bridge_tcp.cpp.o
 
-src/ugv_controller.i: src/ugv_controller.cpp.i
-.PHONY : src/ugv_controller.i
-
-# target to preprocess a source file
-src/ugv_controller.cpp.i:
-	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.i
-.PHONY : src/ugv_controller.cpp.i
-
-src/ugv_controller.s: src/ugv_controller.cpp.s
-.PHONY : src/ugv_controller.s
-
-# target to generate assembly for a file
-src/ugv_controller.cpp.s:
-	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.s
-.PHONY : src/ugv_controller.cpp.s
-
-src/ugv_controller_node.o: src/ugv_controller_node.cpp.o
-.PHONY : src/ugv_controller_node.o
-
-# target to build an object file
-src/ugv_controller_node.cpp.o:
-	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o
-.PHONY : src/ugv_controller_node.cpp.o
-
-src/ugv_controller_node.i: src/ugv_controller_node.cpp.i
-.PHONY : src/ugv_controller_node.i
+roborio_bridge_tcp.i: roborio_bridge_tcp.cpp.i
+.PHONY : roborio_bridge_tcp.i
 
 # target to preprocess a source file
-src/ugv_controller_node.cpp.i:
-	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.i
-.PHONY : src/ugv_controller_node.cpp.i
+roborio_bridge_tcp.cpp.i:
+	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.i
+.PHONY : roborio_bridge_tcp.cpp.i
 
-src/ugv_controller_node.s: src/ugv_controller_node.cpp.s
-.PHONY : src/ugv_controller_node.s
+roborio_bridge_tcp.s: roborio_bridge_tcp.cpp.s
+.PHONY : roborio_bridge_tcp.s
 
 # target to generate assembly for a file
-src/ugv_controller_node.cpp.s:
-	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.s
-.PHONY : src/ugv_controller_node.cpp.s
+roborio_bridge_tcp.cpp.s:
+	cd /home/sophie/Documents/FRC2017/build && $(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.s
+.PHONY : roborio_bridge_tcp.cpp.s
 
 # Help Target
 help:
@@ -225,12 +201,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... roborio_bridge"
 	@echo "... test"
-	@echo "... src/ugv_controller.o"
-	@echo "... src/ugv_controller.i"
-	@echo "... src/ugv_controller.s"
-	@echo "... src/ugv_controller_node.o"
-	@echo "... src/ugv_controller_node.i"
-	@echo "... src/ugv_controller_node.s"
+	@echo "... roborio_bridge_tcp.o"
+	@echo "... roborio_bridge_tcp.i"
+	@echo "... roborio_bridge_tcp.s"
 .PHONY : help
 
 

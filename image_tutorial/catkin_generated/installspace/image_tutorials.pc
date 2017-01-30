@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: image_tutorials
+Description: Description of image_tutorials
+Version: 0.0.0
+Cflags: 
+Libs: -L/usr/local/lib 
+Requires: 

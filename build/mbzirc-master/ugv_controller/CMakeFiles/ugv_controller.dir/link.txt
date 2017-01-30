@@ -1,1 +1,1 @@
-/usr/bin/c++  -fPIC -O2 -g -DNDEBUG   -shared -Wl,-soname,libugv_controller.so -o /home/sophie/Documents/FRC2017/devel/lib/libugv_controller.so CMakeFiles/ugv_controller.dir/src/ugv_controller.cpp.o CMakeFiles/ugv_controller.dir/src/control_loop.cpp.o 
+/usr/bin/c++  -fPIC -O3 -DNDEBUG   -shared -Wl,-soname,libugv_controller.so -o /home/sophie/Documents/FRC2017/devel/lib/libugv_controller.so CMakeFiles/ugv_controller.dir/src/ugv_controller.cpp.o CMakeFiles/ugv_controller.dir/src/control_loop.cpp.o 

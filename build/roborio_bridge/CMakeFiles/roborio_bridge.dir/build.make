@@ -49,62 +49,37 @@ include roborio_bridge/CMakeFiles/roborio_bridge.dir/progress.make
 # Include the compile flags for this target's objects.
 include roborio_bridge/CMakeFiles/roborio_bridge.dir/flags.make
 
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o: roborio_bridge/CMakeFiles/roborio_bridge.dir/flags.make
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o: /home/sophie/Documents/FRC2017/src/roborio_bridge/src/ugv_controller.cpp
+roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o: roborio_bridge/CMakeFiles/roborio_bridge.dir/flags.make
+roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o: /home/sophie/Documents/FRC2017/src/roborio_bridge/roborio_bridge_tcp.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/Documents/FRC2017/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o"
-	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o -c /home/sophie/Documents/FRC2017/src/roborio_bridge/src/ugv_controller.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o"
+	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o -c /home/sophie/Documents/FRC2017/src/roborio_bridge/roborio_bridge_tcp.cpp
 
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.i"
-	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sophie/Documents/FRC2017/src/roborio_bridge/src/ugv_controller.cpp > CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.i
+roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.i"
+	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sophie/Documents/FRC2017/src/roborio_bridge/roborio_bridge_tcp.cpp > CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.i
 
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.s"
-	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sophie/Documents/FRC2017/src/roborio_bridge/src/ugv_controller.cpp -o CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.s
+roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.s"
+	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sophie/Documents/FRC2017/src/roborio_bridge/roborio_bridge_tcp.cpp -o CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.s
 
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o.requires:
-.PHONY : roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o.requires
+roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o.requires:
+.PHONY : roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o.requires
 
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o.provides: roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o.requires
-	$(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o.provides.build
-.PHONY : roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o.provides
+roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o.provides: roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o.requires
+	$(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o.provides.build
+.PHONY : roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o.provides
 
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o.provides.build: roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o
-
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o: roborio_bridge/CMakeFiles/roborio_bridge.dir/flags.make
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o: /home/sophie/Documents/FRC2017/src/roborio_bridge/src/ugv_controller_node.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/Documents/FRC2017/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o"
-	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o -c /home/sophie/Documents/FRC2017/src/roborio_bridge/src/ugv_controller_node.cpp
-
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.i"
-	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sophie/Documents/FRC2017/src/roborio_bridge/src/ugv_controller_node.cpp > CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.i
-
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.s"
-	cd /home/sophie/Documents/FRC2017/build/roborio_bridge && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sophie/Documents/FRC2017/src/roborio_bridge/src/ugv_controller_node.cpp -o CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.s
-
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o.requires:
-.PHONY : roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o.requires
-
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o.provides: roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o.requires
-	$(MAKE) -f roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o.provides.build
-.PHONY : roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o.provides
-
-roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o.provides.build: roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o
+roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o.provides.build: roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o
 
 # Object files for target roborio_bridge
 roborio_bridge_OBJECTS = \
-"CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o" \
-"CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o"
+"CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o"
 
 # External object files for target roborio_bridge
 roborio_bridge_EXTERNAL_OBJECTS =
 
-/home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge: roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o
-/home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge: roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o
+/home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge: roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o
 /home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge: roborio_bridge/CMakeFiles/roborio_bridge.dir/build.make
 /home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge: /opt/ros/indigo/lib/libroscpp.so
 /home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge: /usr/lib/x86_64-linux-gnu/libboost_signals.so
@@ -131,8 +106,7 @@ roborio_bridge_EXTERNAL_OBJECTS =
 roborio_bridge/CMakeFiles/roborio_bridge.dir/build: /home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge
 .PHONY : roborio_bridge/CMakeFiles/roborio_bridge.dir/build
 
-roborio_bridge/CMakeFiles/roborio_bridge.dir/requires: roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o.requires
-roborio_bridge/CMakeFiles/roborio_bridge.dir/requires: roborio_bridge/CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o.requires
+roborio_bridge/CMakeFiles/roborio_bridge.dir/requires: roborio_bridge/CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o.requires
 .PHONY : roborio_bridge/CMakeFiles/roborio_bridge.dir/requires
 
 roborio_bridge/CMakeFiles/roborio_bridge.dir/clean:

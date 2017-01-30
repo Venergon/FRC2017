@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: ugv_controller
+Description: Description of ugv_controller
+Version: 1.0.0
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib -lugv_controller
+Requires: geometry_msgs roscpp std_msgs nav_msgs

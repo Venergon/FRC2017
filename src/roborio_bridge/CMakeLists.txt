@@ -130,7 +130,7 @@ include_directories(
 # add_dependencies(beginner_tutorials ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(roborio_bridge src/ugv_controller.cpp src/ugv_controller_node.cpp)
+add_executable(roborio_bridge roborio_bridge_tcp.cpp)
 target_link_libraries(roborio_bridge ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the executable

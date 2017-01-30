@@ -1,6 +1,5 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/roborio_bridge.dir/src/ugv_controller.cpp.o"
-  "CMakeFiles/roborio_bridge.dir/src/ugv_controller_node.cpp.o"
+  "CMakeFiles/roborio_bridge.dir/roborio_bridge_tcp.cpp.o"
   "/home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge.pdb"
   "/home/sophie/Documents/FRC2017/devel/lib/roborio_bridge/roborio_bridge"
 )
