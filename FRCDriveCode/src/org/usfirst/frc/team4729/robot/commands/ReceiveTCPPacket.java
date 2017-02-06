@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class ReceiveUDPPacket extends Command {
+public class ReceiveTCPPacket extends Command {
 
-    public ReceiveUDPPacket() {
+    public ReceiveTCPPacket() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -22,7 +22,8 @@ public class ReceiveUDPPacket extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	SmartDashboard.putString("Working", "yes");
-    	Robot.udpSubsystem.receivePacket();
+    	String receivedMsg =  Robot.udpSubsystem.receivePacket();
+    	SmartDashboard.putString("received message", receivedMsg);
     }
 
     // Make this return true when this Command no longer needs to run execute()

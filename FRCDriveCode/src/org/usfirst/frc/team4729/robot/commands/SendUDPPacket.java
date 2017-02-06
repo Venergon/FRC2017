@@ -23,7 +23,7 @@ public class SendUDPPacket extends Command {
     protected void execute() {
     	SmartDashboard.putString("Working", "send");
 
-    	Robot.udpSubsystem.sendPacket("hello world","10.47.29.234");
+    	Robot.udpSubsystem.sendPacket("hello world");
     }
     
 

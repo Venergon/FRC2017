@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4729.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team4729.robot.subsystems.UDPSubsystem;
+import org.usfirst.frc.team4729.robot.subsystems.TCPSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,7 +19,7 @@ import org.usfirst.frc.team4729.robot.subsystems.UDPSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static DriveSubsystem driveSubsystem;
-	public static UDPSubsystem udpSubsystem;
+	public static TCPSubsystem udpSubsystem;
 	public static OI oi;
 
     Command autonomousCommand;
@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	driveSubsystem = new DriveSubsystem();
-    	udpSubsystem = new UDPSubsystem(1917);
+    	udpSubsystem = new TCPSubsystem(1917);
 		oi = new OI();
         // instantiate the command used for the autonomous period
     }

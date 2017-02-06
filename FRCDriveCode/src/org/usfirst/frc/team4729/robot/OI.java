@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4729.robot.commands.OneStickArcade;
 import org.usfirst.frc.team4729.robot.commands.OneStickTank;
-import org.usfirst.frc.team4729.robot.commands.ReceiveUDPPacket;
+import org.usfirst.frc.team4729.robot.commands.ReceiveTCPPacket;
 import org.usfirst.frc.team4729.robot.commands.SendUDPPacket;
 import org.usfirst.frc.team4729.robot.commands.TwoStickArcade;
 import org.usfirst.frc.team4729.robot.commands.TwoStickTank;
@@ -68,7 +68,7 @@ public class OI {
     	button3.whenPressed (new TwoStickTank(leftStick, rightStick));
     	button4.whenPressed (new OneStickArcade(leftStick));
     	button5.whenPressed (new TwoStickArcade(leftStick, rightStick));
-    	button6.whileHeld (new ReceiveUDPPacket());
+    	button6.whileHeld (new ReceiveTCPPacket());
     	button7.whileHeld (new SendUDPPacket());
     	//button8.whileHeld ();
     	//button9.whileHeld ();
