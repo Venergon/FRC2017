@@ -45,6 +45,8 @@ assert.h
 -
 sys/ioctl.h
 -
+ros/serialization.h
+-
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h

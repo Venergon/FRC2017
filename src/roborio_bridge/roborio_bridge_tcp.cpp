@@ -17,12 +17,14 @@
 #include <string.h>
 #include <assert.h>
 #include <sys/ioctl.h>
+#include <ros/serialization.h>
 
 int socket_num;
 
 void motorCallback(const geometry_msgs::Twist::ConstPtr& msg) {
     ROS_INFO_STREAM("Message: " << msg->linear.x);
-    const char* new_msg = "Hi there";
+    char new_msg[256];
+    ros::serialization::serialize(new_msg, msg);
     size_t msg_length = strlen(new_msg);
     
     int sent = write(socket_num, new_msg, msg_length); //strlen = string length
