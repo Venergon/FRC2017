@@ -38,7 +38,7 @@ public class DriveSubsystem extends Subsystem {
     	if (Robot.flipped) {
     		driveTrain.arcadeDrive(-forwardSpeed*maxSpeed, -turnSpeed*maxSpeed);
     	} else {
-    		driveTrain.arcadeDrive(forwardSpeed*maxSpeed, turnSpeed*maxSpeed);
+    		driveTrain.arcadeDrive(forwardSpeed*maxSpeed, -turnSpeed*maxSpeed);
     	}
     }
       
