@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4729.robot.subsystems.ClimbSubsystem;
 import org.usfirst.frc.team4729.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team4729.robot.subsystems.FuelSubsystem;
-import org.usfirst.frc.team4729.robot.subsystems.TCPSubsystem;
+//import org.usfirst.frc.team4729.robot.subsystems.TCPSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,7 +21,7 @@ import org.usfirst.frc.team4729.robot.subsystems.TCPSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static DriveSubsystem driveSubsystem;
-	public static TCPSubsystem udpSubsystem;
+	//public static TCPSubsystem udpSubsystem;
 	public static ClimbSubsystem climbSubsystem;
 	public static FuelSubsystem fuelSubsystem;
 	public static OI oi;
@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	driveSubsystem = new DriveSubsystem();
-    	udpSubsystem = new TCPSubsystem(1917);
+    	//udpSubsystem = new TCPSubsystem(1917);
     	climbSubsystem = new ClimbSubsystem();
     	fuelSubsystem = new FuelSubsystem();
 		oi = new OI();
