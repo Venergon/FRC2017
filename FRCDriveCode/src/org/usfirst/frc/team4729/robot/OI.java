@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4729.robot.commands.Climb;
 import org.usfirst.frc.team4729.robot.commands.Feed;
+import org.usfirst.frc.team4729.robot.commands.Flip;
 import org.usfirst.frc.team4729.robot.commands.OneStickArcade;
 import org.usfirst.frc.team4729.robot.commands.OneStickTank;
 //import org.usfirst.frc.team4729.robot.commands.ReceiveTCPPacket;
@@ -80,7 +81,7 @@ public class OI {
     	//button11.whileHeld ();
     	//rightButton1.whenPressed ();
     	//rightButton2.whileHeld ();
-    	//rightButton3.whenPressed ();
+    	rightButton3.whileHeld(new Flip());
     	//rightButton4.whileHeld ();
     	//rightButton5.whileHeld ();
     	//rightButton6.whileHeld ();

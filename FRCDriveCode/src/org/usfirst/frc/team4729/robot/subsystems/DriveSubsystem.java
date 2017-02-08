@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4729.robot.subsystems;
 
+import org.usfirst.frc.team4729.robot.Robot;
 import org.usfirst.frc.team4729.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -31,10 +33,13 @@ public class DriveSubsystem extends Subsystem {
     	if (Math.abs(desiredTurn) < Math.abs(turnSpeed)) {
     		turnSpeed = desiredTurn;
     	}
-    	
     	turnSpeed += (desiredTurn-turnSpeed)*ACCELERATION;
     	forwardSpeed += (desiredMove-forwardSpeed)*ACCELERATION;
-    	driveTrain.arcadeDrive(-forwardSpeed*maxSpeed, -turnSpeed*maxSpeed);
+    	if (Robot.flipped) {
+    		driveTrain.arcadeDrive(-forwardSpeed*maxSpeed, -turnSpeed*maxSpeed);
+    	} else {
+    		driveTrain.arcadeDrive(forwardSpeed*maxSpeed, turnSpeed*maxSpeed);
+    	}
     }
       
     public void tank (double desiredLeft, double desiredRight, double maxSpeed) {
@@ -48,7 +53,11 @@ public class DriveSubsystem extends Subsystem {
     	
     	rightSpeed += (desiredRight-rightSpeed)*ACCELERATION;
     	leftSpeed += (desiredLeft-leftSpeed)*ACCELERATION;
-    	driveTrain.tankDrive(leftSpeed*maxSpeed, rightSpeed*maxSpeed);
+    	if (Robot.flipped) {
+    		driveTrain.tankDrive(-leftSpeed*maxSpeed, -rightSpeed*maxSpeed);
+    	} else {
+    		driveTrain.tankDrive(rightSpeed*maxSpeed, leftSpeed*maxSpeed);
+    	}
 	}
 }
 

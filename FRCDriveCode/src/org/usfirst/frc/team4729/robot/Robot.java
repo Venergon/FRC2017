@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	public static FuelSubsystem fuelSubsystem;
 	public static OI oi;
 	
-	public static int flipped;
+	public static boolean flipped;
 
     Command autonomousCommand;
 
@@ -40,6 +40,7 @@ public class Robot extends IterativeRobot {
     	climbSubsystem = new ClimbSubsystem();
     	fuelSubsystem = new FuelSubsystem();
 		oi = new OI();
+		flipped = false;
         // instantiate the command used for the autonomous period
     }
 	

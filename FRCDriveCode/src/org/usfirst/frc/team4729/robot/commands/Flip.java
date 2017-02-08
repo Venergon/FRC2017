@@ -17,7 +17,7 @@ public class Flip extends Command {
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    	Robot.flipped *= -1;
+    	Robot.flipped = !Robot.flipped;
     }
 
     // Called repeatedly when this Command is scheduled to run
