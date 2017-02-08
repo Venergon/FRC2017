@@ -4,28 +4,26 @@ import org.usfirst.frc.team4729.robot.Robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class OneStickArcade extends Command {
-	Joystick stick;
-    public OneStickArcade(Joystick stick) {
-    	requires(Robot.driveSubsystem);
-    	this.stick = stick;
+public class Climb extends Command {
+	Joystick xbox;
+	
+    public Climb(Joystick xbox) {
+    	this.xbox = xbox;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartDashboard.putString("Drive Type", "1 Stick Arcade");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.arcade(stick.getY(), stick.getX(), 1);
+    	Robot.climbSubsystem.climb(xbox.getRawAxis(3));
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -40,5 +38,6 @@ public class OneStickArcade extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.climbSubsystem.stopClimbing();
     }
 }

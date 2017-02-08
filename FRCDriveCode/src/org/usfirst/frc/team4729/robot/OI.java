@@ -4,12 +4,16 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team4729.robot.commands.Climb;
+import org.usfirst.frc.team4729.robot.commands.Feed;
 import org.usfirst.frc.team4729.robot.commands.OneStickArcade;
 import org.usfirst.frc.team4729.robot.commands.OneStickTank;
 import org.usfirst.frc.team4729.robot.commands.ReceiveTCPPacket;
 import org.usfirst.frc.team4729.robot.commands.SendUDPPacket;
+import org.usfirst.frc.team4729.robot.commands.Shoot;
 import org.usfirst.frc.team4729.robot.commands.TwoStickArcade;
 import org.usfirst.frc.team4729.robot.commands.TwoStickTank;
+import org.usfirst.frc.team4729.robot.subsystems.Intake;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -86,9 +90,9 @@ public class OI {
     	//rightButton10.whileHeld ();
     	//rightButton11.whileHeld ();
     	//a.whileHeld ();
-    	//b.whileHeld ();
-    	//x.whileHeld ();
-    	//y.whileHeld ();
+    	b.whileHeld (new Feed());
+    	x.whileHeld (new Shoot());
+    	y.whileHeld (new Climb(xbox));
     	//lb.whileHeld ();
     	//rb.whileHeld ();
     	//start.whileHeld();
