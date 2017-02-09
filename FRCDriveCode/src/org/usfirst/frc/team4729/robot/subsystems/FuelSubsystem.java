@@ -30,7 +30,7 @@ public class FuelSubsystem extends Subsystem {
     }
     
     public void shoot() {
-    	shooter.set(1);
+    	shooter.set(0.5);
     	preloader.set(1);
     }
     

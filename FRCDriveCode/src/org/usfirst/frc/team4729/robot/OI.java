@@ -79,7 +79,7 @@ public class OI {
     	//button9.whileHeld ();
     	//button10.whileHeld ();
     	//button11.whileHeld ();
-    	//rightButton1.whenPressed ();
+    	rightButton1.whileHeld (new Shoot());
     	//rightButton2.whileHeld ();
     	rightButton3.whileHeld(new Flip());
     	//rightButton4.whileHeld ();
