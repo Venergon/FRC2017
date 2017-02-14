@@ -59,6 +59,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
     	nucConnected = (boolean) nucConnectedChooser.getSelected();
+    	SmartDashboard.putBoolean("nucConnected", nucConnected);
     	tcpSubsystem = new TCPSubsystem(1917);
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
@@ -72,6 +73,13 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+    	nucConnected = (boolean) nucConnectedChooser.getSelected();
+    	SmartDashboard.putBoolean("nucConnected", nucConnected);
+    	if (tcpSubsystem == null) {
+    		tcpSubsystem = new TCPSubsystem(1917);
+    	}
+
+
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove

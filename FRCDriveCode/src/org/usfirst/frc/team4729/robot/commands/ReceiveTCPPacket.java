@@ -23,7 +23,11 @@ public class ReceiveTCPPacket extends Command {
     protected void execute() {
     	SmartDashboard.putString("Working", "yes");
     	String receivedMsg =  Robot.tcpSubsystem.receivePacket();
-    	SmartDashboard.putString("received message", receivedMsg);
+    	if (receivedMsg == null) {
+    		SmartDashboard.putString("received message", "[null]");
+    	} else {
+    		SmartDashboard.putString("received message", receivedMsg);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

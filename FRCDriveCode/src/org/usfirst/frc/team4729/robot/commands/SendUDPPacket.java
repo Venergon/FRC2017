@@ -21,9 +21,10 @@ public class SendUDPPacket extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putString("Working", "send");
+    	SmartDashboard.putString("Working", "sendl");
 
     	Robot.tcpSubsystem.sendPacket("hello world");
+    	SmartDashboard.putString("Working", "done");
     }
     
 

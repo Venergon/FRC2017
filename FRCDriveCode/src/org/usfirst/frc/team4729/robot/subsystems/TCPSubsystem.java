@@ -47,11 +47,14 @@ public class TCPSubsystem extends Subsystem {
 				return null;
 			}
 		} else {
+			SmartDashboard.putString("connection error", "def not using nuc");
 			return null;
 		}
 	}
 	
 	public void sendPacket(String msg) {
+		SmartDashboard.putString("blah", "blah");
+
 		if (Robot.nucConnected) {
 			try {
 				DataOutputStream outToClient = new DataOutputStream(
@@ -60,6 +63,8 @@ public class TCPSubsystem extends Subsystem {
 			} catch (IOException e) {
 				SmartDashboard.putString("connection error", "error sending packet");
 			}
+		} else {
+			SmartDashboard.putString("connection error", "not using nuc");
 		}
 	}
 	
