@@ -5,11 +5,14 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4729.robot.subsystems.ClimbSubsystem;
 import org.usfirst.frc.team4729.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team4729.robot.subsystems.FuelSubsystem;
 //import org.usfirst.frc.team4729.robot.subsystems.TCPSubsystem;
+import org.usfirst.frc.team4729.robot.subsystems.TCPSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,10 +24,13 @@ import org.usfirst.frc.team4729.robot.subsystems.FuelSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static DriveSubsystem driveSubsystem;
-	//public static TCPSubsystem udpSubsystem;
+	public static TCPSubsystem tcpSubsystem;
 	public static ClimbSubsystem climbSubsystem;
 	public static FuelSubsystem fuelSubsystem;
 	public static OI oi;
+	public static SendableChooser nucConnectedChooser;
+	
+	public static boolean nucConnected;
 	
 	public static boolean flipped;
 
@@ -36,11 +42,14 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	driveSubsystem = new DriveSubsystem();
-    	//udpSubsystem = new TCPSubsystem(1917);
     	climbSubsystem = new ClimbSubsystem();
     	fuelSubsystem = new FuelSubsystem();
 		oi = new OI();
 		flipped = false;
+		nucConnectedChooser = new SendableChooser();
+		nucConnectedChooser.addDefault("Yes", true);
+		nucConnectedChooser.addObject("No", false);
+		SmartDashboard.putData("nucConnected?", nucConnectedChooser);
         // instantiate the command used for the autonomous period
     }
 	
@@ -49,6 +58,8 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
+    	nucConnected = (boolean) nucConnectedChooser.getSelected();
+    	tcpSubsystem = new TCPSubsystem(1917);
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
