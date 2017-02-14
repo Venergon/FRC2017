@@ -2,12 +2,14 @@
 package org.usfirst.frc.team4729.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4729.robot.commands.TwoStickArcade;
 import org.usfirst.frc.team4729.robot.subsystems.ClimbSubsystem;
 import org.usfirst.frc.team4729.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team4729.robot.subsystems.FuelSubsystem;
@@ -85,6 +87,11 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Joystick leftStick = new Joystick(0);
+        Joystick rightStick = new Joystick(1);
+        TwoStickArcade twoStickArcade = new TwoStickArcade(leftStick, rightStick);
+        twoStickArcade.start();
+        
     }
 
     /**

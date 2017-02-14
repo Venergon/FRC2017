@@ -12,29 +12,38 @@ public class DriveSubsystem extends Subsystem {
     // here. Call these from Commands.
     RobotDrive driveTrain = new RobotDrive(RobotMap.LEFT_DRIVE, RobotMap.RIGHT_DRIVE);
     
-    double maxSpeed = 1;
+
 	double leftSpeed = 0;
 	double rightSpeed = 0;
 	double turnSpeed = 0;
 	double forwardSpeed = 0;
     
-	static double ACCELERATION = 0.5;
-	
+	static double ACCELERATION = 0.1;
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
 	
     public void arcade(double desiredMove, double desiredTurn, double maxSpeed) {
-    	if (Math.abs(desiredMove) < Math.abs(turnSpeed)){
+    	if (Math.abs(desiredMove) < Math.abs(forwardSpeed)){
     		forwardSpeed = desiredMove;
     	}
     	
     	if (Math.abs(desiredTurn) < Math.abs(turnSpeed)) {
     		turnSpeed = desiredTurn;
     	}
+    	
     	turnSpeed += (desiredTurn-turnSpeed)*ACCELERATION;
     	forwardSpeed += (desiredMove-forwardSpeed)*ACCELERATION;
+    	
+    	if (Math.abs(forwardSpeed) > 0.05) {
+    		forwardSpeed = forwardSpeed*0.6+forwardSpeed/Math.abs(forwardSpeed)*0.4;
+    	}
+    	else {
+    		turnSpeed = turnSpeed*0.6+turnSpeed/Math.abs(turnSpeed)*0.4;
+    		forwardSpeed = 0;
+    	}
+    	
     	if (Robot.flipped) {
     		driveTrain.arcadeDrive(-forwardSpeed*maxSpeed, -turnSpeed*maxSpeed);
     	} else {
@@ -53,6 +62,14 @@ public class DriveSubsystem extends Subsystem {
     	
     	rightSpeed += (desiredRight-rightSpeed)*ACCELERATION;
     	leftSpeed += (desiredLeft-leftSpeed)*ACCELERATION;
+    	
+    	if (Math.abs(leftSpeed) > 0.05) {
+    		leftSpeed = leftSpeed*0.6+leftSpeed/Math.abs(leftSpeed)*0.4;
+    	}
+    	if (Math.abs(rightSpeed) > 0.05) {
+    		rightSpeed = rightSpeed*0.6+rightSpeed/Math.abs(rightSpeed)*0.4;
+    	}
+    	
     	if (Robot.flipped) {
     		driveTrain.tankDrive(-leftSpeed*maxSpeed, -rightSpeed*maxSpeed);
     	} else {
