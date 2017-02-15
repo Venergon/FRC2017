@@ -25,7 +25,7 @@ public class OneStickArcade extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.arcade(stick.getY(), stick.getX(), 1);
+    	Robot.driveSubsystem.arcade(stick.getY(), stick.getX());
     }
 
     // Make this return true when this Command no longer needs to run execute()

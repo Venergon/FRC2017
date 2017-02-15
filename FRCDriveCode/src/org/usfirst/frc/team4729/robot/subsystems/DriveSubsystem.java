@@ -16,7 +16,11 @@ public class DriveSubsystem extends Subsystem {
 	double leftSpeed = 0;
 	double rightSpeed = 0;
 	double turnSpeed = 0;
-	double forwardSpeed = 0;
+	double moveSpeed = 0;
+	double leftFinal = 0;
+	double rightFinal = 0;
+	double moveFinal = 0;
+	double turnFinal = 0;
     
 	static double ACCELERATION = 0.1;
     public void initDefaultCommand() {
@@ -24,9 +28,9 @@ public class DriveSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 	
-    public void arcade(double desiredMove, double desiredTurn, double maxSpeed) {
-    	if (Math.abs(desiredMove) < Math.abs(forwardSpeed)){
-    		forwardSpeed = desiredMove;
+    public void arcade(double desiredMove, double desiredTurn) {
+    	if (Math.abs(desiredMove) < Math.abs(moveSpeed)){
+    		moveSpeed = desiredMove;
     	}
     	
     	if (Math.abs(desiredTurn) < Math.abs(turnSpeed)) {
@@ -34,24 +38,29 @@ public class DriveSubsystem extends Subsystem {
     	}
     	
     	turnSpeed += (desiredTurn-turnSpeed)*ACCELERATION;
-    	forwardSpeed += (desiredMove-forwardSpeed)*ACCELERATION;
+    	moveSpeed += (desiredMove-moveSpeed)*ACCELERATION;
     	
-    	if (Math.abs(forwardSpeed) > 0.05) {
-    		forwardSpeed = forwardSpeed*0.6+forwardSpeed/Math.abs(forwardSpeed)*0.4;
+    	if (Math.abs(moveSpeed) > 0.05) {
+    		moveFinal = moveSpeed*0.6+moveSpeed/Math.abs(moveSpeed)*0.4;
+    		turnFinal = turnSpeed;
+    	}
+    	else  if (Math.abs(turnSpeed) > 0.05) {
+    		moveFinal = 0;
+    		turnFinal = turnSpeed*0.6+turnSpeed/Math.abs(turnSpeed)*0.4;
     	}
     	else {
-    		turnSpeed = turnSpeed*0.6+turnSpeed/Math.abs(turnSpeed)*0.4;
-    		forwardSpeed = 0;
+    		moveFinal = 0;
+    		turnFinal = 0;
     	}
     	
     	if (Robot.flipped) {
-    		driveTrain.arcadeDrive(-forwardSpeed*maxSpeed, -turnSpeed*maxSpeed);
+    		driveTrain.arcadeDrive(-moveFinal, -turnFinal);
     	} else {
-    		driveTrain.arcadeDrive(forwardSpeed*maxSpeed, -turnSpeed*maxSpeed);
+    		driveTrain.arcadeDrive(moveFinal, -turnFinal);
     	}
     }
       
-    public void tank (double desiredLeft, double desiredRight, double maxSpeed) {
+    public void tank (double desiredLeft, double desiredRight) {
     	if (Math.abs(desiredLeft) < Math.abs(leftSpeed)){
     		leftSpeed = desiredLeft;
     	}
@@ -71,9 +80,9 @@ public class DriveSubsystem extends Subsystem {
     	}
     	
     	if (Robot.flipped) {
-    		driveTrain.tankDrive(-leftSpeed*maxSpeed, -rightSpeed*maxSpeed);
+    		driveTrain.tankDrive(-leftSpeed, -rightSpeed);
     	} else {
-    		driveTrain.tankDrive(rightSpeed*maxSpeed, leftSpeed*maxSpeed);
+    		driveTrain.tankDrive(rightSpeed, leftSpeed);
     	}
 	}
 }
@@ -96,7 +105,7 @@ public class DriveSubsystem extends Subsystem {
 	double leftSpeed = 0;
 	double rightSpeed = 0;
 	double turnSpeed = 0;
-	double forwardSpeed = 0;
+	double moveSpeed = 0;
 	
 	double acceleration = 0.05;
 	double speed = 1;
@@ -110,22 +119,22 @@ public class DriveSubsystem extends Subsystem {
     public void arcade(double desiredMove, double desiredTurn) {
     	if ((desiredMove < 0.1) && (desiredMove > -0.1)){
     		desiredMove = 0;
-    		forwardSpeed = 0;
+    		moveSpeed = 0;
     	}
     	if ((desiredTurn < 0.1) && (desiredTurn > -0.1)){
     		desiredTurn = 0;
     		turnSpeed = 0;
     	}
     	
-    	if  (((desiredMove > 0) && (forwardSpeed < 0)) || ((desiredMove < 0) && (forwardSpeed > 0))){
-    		forwardSpeed = 0;
+    	if  (((desiredMove > 0) && (moveSpeed < 0)) || ((desiredMove < 0) && (moveSpeed > 0))){
+    		moveSpeed = 0;
     	}
     	if (((desiredTurn > 0) && (turnSpeed < 0)) || ((desiredTurn < 0) && (turnSpeed > 0))){
     		turnSpeed = 0;
     	}
     	
     	if (Math.abs(desiredMove) < Math.abs(turnSpeed)){
-    		forwardSpeed = desiredMove;
+    		moveSpeed = desiredMove;
     	}
     	
     	if (Math.abs(desiredTurn) < Math.abs(turnSpeed)) {
@@ -133,8 +142,8 @@ public class DriveSubsystem extends Subsystem {
     	}
     	
     	turnSpeed += (desiredTurn-turnSpeed)*acceleration;
-    	forwardSpeed += (desiredMove-forwardSpeed)*acceleration;
-    	driveTrain.arcadeDrive(-forwardSpeed*speed, -turnSpeed*speed);
+    	moveSpeed += (desiredMove-moveSpeed)*acceleration;
+    	driveTrain.arcadeDrive(-moveSpeed*speed, -turnSpeed*speed);
     }
     
     
