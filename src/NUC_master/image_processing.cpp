@@ -3,6 +3,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/opencv.hpp>
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 #define RED 2
@@ -25,7 +26,7 @@ int image_setup()
 {
 	cap = VideoCapture(1); // open the default camera
 	if(!cap.isOpened())  // check if we succeeded
-		return -1;
+		return EXIT_FAILURE;
 
 	Mat edges;
 	namedWindow("edges",1);
@@ -42,7 +43,7 @@ int image_setup()
 		if(waitKey(30) >= 0) break;
 	}*/
 	// the camera will be deinitialized automatically in VideoCapture destructor
-	return 0;
+	return EXIT_SUCCESS;
 }
 
 void image_set_mode(int mode) {
