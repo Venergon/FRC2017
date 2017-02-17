@@ -25,7 +25,7 @@ public class OneStickTank extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.tank(stick.getY(), stick.getY(), 1);
+    	Robot.driveSubsystem.tank(stick.getY(), stick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

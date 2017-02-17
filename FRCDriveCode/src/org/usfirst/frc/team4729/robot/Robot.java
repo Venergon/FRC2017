@@ -48,10 +48,10 @@ public class Robot extends IterativeRobot {
     	fuelSubsystem = new FuelSubsystem();
 		oi = new OI();
 		flipped = false;
-		nucConnectedChooser = new SendableChooser();
-		nucConnectedChooser.addDefault("Yes", true);
-		nucConnectedChooser.addObject("No", false);
-		SmartDashboard.putData("nucConnected?", nucConnectedChooser);
+//		nucConnectedChooser = new SendableChooser();
+//		nucConnectedChooser.addDefault("Yes", true);
+//		nucConnectedChooser.addObject("No", false);
+//		SmartDashboard.putData("nucConnected?", nucConnectedChooser);
         // instantiate the command used for the autonomous period
     }
 	
@@ -75,11 +75,11 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-    	nucConnected = (boolean) nucConnectedChooser.getSelected();
-    	SmartDashboard.putBoolean("nucConnected", nucConnected);
-    	if (tcpSubsystem == null) {
-    		tcpSubsystem = new TCPSubsystem(1917);
-    	}
+//    	nucConnected = (boolean) nucConnectedChooser.getSelected();
+//    	SmartDashboard.putBoolean("nucConnected", nucConnected);
+//    	if (tcpSubsystem == null) {
+//    		tcpSubsystem = new TCPSubsystem(1917);
+//    	}
 
 
 		// This makes sure that the autonomous stops running when

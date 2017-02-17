@@ -27,7 +27,7 @@ public class TwoStickTank extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.tank(leftStick.getY(), rightStick.getY(), rightStick.getZ());
+    	Robot.driveSubsystem.tank(leftStick.getY(), rightStick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
