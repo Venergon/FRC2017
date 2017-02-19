@@ -1,9 +1,10 @@
-//#include "roborio_bridge.cpp"
+#include "bridge.h"
 #include "image_processing.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 int main() {
+  bridge_setup();
   int setup_success = image_setup();
   if (setup_success == EXIT_FAILURE) { //The image did not setup properly (camera not connected)
       fprintf(stderr, "Image setup failed!\n");

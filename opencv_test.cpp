@@ -20,7 +20,7 @@ Mat contours(Mat current, Mat original);
 bool cmp(vector<Point> a, vector<Point> b);
 
 int main(int argc, char** argv) {
-	VideoCapture cap(0); // open the default camera
+	VideoCapture cap(2); // open the default camera
 	if(!cap.isOpened())  // check if we succeeded
 		return -1;
 
@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
 		cap >> frame; // get a new frame from camera
 		Mat modified = onlyGreen(frame);
 		cvtColor( modified, modified, CV_BGR2GRAY );
+		imshow("Only Green", modified);
 		modified = contours(modified, frame);
 
 		imshow("Tape Tracker", modified);
