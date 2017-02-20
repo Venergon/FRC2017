@@ -31,6 +31,8 @@ public class Robot extends IterativeRobot {
 	public static FuelSubsystem fuelSubsystem;
 	public static OI oi;
 	public static SendableChooser nucConnectedChooser;
+	public static int BLUE;
+	public static int RED;
 	
 	public static boolean nucConnected;
 	
@@ -48,6 +50,9 @@ public class Robot extends IterativeRobot {
     	fuelSubsystem = new FuelSubsystem();
 		oi = new OI();
 		flipped = false;
+		
+		BLUE = 0;
+		RED = 1;
 //		nucConnectedChooser = new SendableChooser();
 //		nucConnectedChooser.addDefault("Yes", true);
 //		nucConnectedChooser.addObject("No", false);
@@ -64,7 +69,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putBoolean("nucConnected", nucConnected);
     	tcpSubsystem = new TCPSubsystem(1917);
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        if (autonomousCommand != null) autonomousCommand.start(BLUE);
     }
 
     /**
