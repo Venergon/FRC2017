@@ -20,17 +20,9 @@
 #include <geometry_msgs/Twist.h>
 //#include <ros/serialization.h>
 
-typedef struct _message_parts {
-	char part1[256];
-	char part2[256];
-} message_parts;
-
 int socket_num;
 
 void send_message(/*const geometry_msgs::Twist::ConstPtr& msg*/ const char* msg) {
-    //ROS_INFO_STREAM("Message: " << msg->linear.x);
-    char new_msg[256];
-    //ros::serialization::serialize(new_msg, msg);
     size_t msg_length = strlen(msg);
     int sent = write(socket_num, msg, msg_length); //strlen = string length
     //result = sendto(sock, msg, msg_length, 0, (sockaddr*)&addrDest,
@@ -54,34 +46,26 @@ void create_socket() {
     }
 }
 
-void receive_message() {
+int receive_message(char *buffer, int buffer_size) {
     int readResult = 0;
-    char buffer[256];
     int bytesLeft = 0;
     ioctl(socket_num, FIONREAD, &bytesLeft);
     if (bytesLeft > 0) {
-        readResult = read(socket_num, buffer, 256);
+        readResult = read(socket_num, buffer,  buffer_size);
         if (readResult > 0) {
             buffer[readResult] = '\0';
             std::cout << "buffer is" << buffer << "readResult is" << readResult << std::endl;
-        }
+	    return 1;
+	}
     }
+    return 0;
 }
 
-struct_essage_parts *decode_message(char *message) {
-	message_parts *parts = (message_type *) malloc(sizeof(message_parts));
-	int colonIndex = 0;
-	while (message[colonIndex] != ':' && message[colonIndex] != '\0') {
-		colonIndex++;
+int decode_message(const char *message, message_parts *parts) {
+	if (sscanf(message, "%s:%s", parts->part1, parts->part2) == 2) {
+		return 2;     
 	}
-	if (message[colonIndex] == '\0') {
-		parts = NULL;	
-	} else {
-		message[colonIndex] = '\0';
-		strncpy(parts->part1, message, 256);
-		strncpy(parts->part2, &(message[colonIndex+1]), 256);
-	}
-	return parts;
+	return 0;
 }
 
 int bridge_setup()

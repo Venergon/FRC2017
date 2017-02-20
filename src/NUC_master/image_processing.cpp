@@ -25,9 +25,8 @@ int image_mode;
 int image_setup()
 {
 	cap = VideoCapture(1); // open the default camera
-	if(!cap.isOpened()) { // check if we succeeded
+	if(!cap.isOpened())  // check if we succeeded
 		return EXIT_FAILURE;
-	}
 
 	Mat edges;
 	namedWindow("edges",1);
