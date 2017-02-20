@@ -1,5 +1,6 @@
 #include "bridge.h"
 #include "image_processing.h"
+#include "auto_master.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
