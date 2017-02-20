@@ -22,7 +22,8 @@ public class DriveSubsystem extends Subsystem {
 	double moveFinal = 0;
 	double turnFinal = 0;
     
-	static double ACCELERATION = 0.1;
+	static double DEADZONE = 0.15;
+	static double ACCELERATION = 0.15;
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -40,13 +41,13 @@ public class DriveSubsystem extends Subsystem {
     	turnSpeed += (desiredTurn-turnSpeed)*ACCELERATION;
     	moveSpeed += (desiredMove-moveSpeed)*ACCELERATION;
     	
-    	if (Math.abs(moveSpeed) > 0.05) {
-    		moveFinal = moveSpeed*0.6+moveSpeed/Math.abs(moveSpeed)*0.4;
+    	if (Math.abs(moveSpeed) > DEADZONE) {
+    		moveFinal = moveSpeed*0.7+moveSpeed/Math.abs(moveSpeed)*0.3;
     		turnFinal = turnSpeed;
     	}
-    	else  if (Math.abs(turnSpeed) > 0.05) {
+    	else  if (Math.abs(turnSpeed) > DEADZONE) {
     		moveFinal = 0;
-    		turnFinal = turnSpeed*0.6+turnSpeed/Math.abs(turnSpeed)*0.4;
+    		turnFinal = turnSpeed*0.7+turnSpeed/Math.abs(turnSpeed)*0.3;
     	}
     	else {
     		moveFinal = 0;
@@ -72,108 +73,17 @@ public class DriveSubsystem extends Subsystem {
     	rightSpeed += (desiredRight-rightSpeed)*ACCELERATION;
     	leftSpeed += (desiredLeft-leftSpeed)*ACCELERATION;
     	
-    	if (Math.abs(leftSpeed) > 0.05) {
-    		leftSpeed = leftSpeed*0.6+leftSpeed/Math.abs(leftSpeed)*0.4;
+    	if (Math.abs(leftSpeed) > DEADZONE) {
+    		leftFinal = leftSpeed*0.7+leftSpeed/Math.abs(leftSpeed)*0.3;
     	}
-    	if (Math.abs(rightSpeed) > 0.05) {
-    		rightSpeed = rightSpeed*0.6+rightSpeed/Math.abs(rightSpeed)*0.4;
+    	if (Math.abs(rightSpeed) > DEADZONE) {
+    		rightFinal = rightSpeed*0.7+rightSpeed/Math.abs(rightSpeed)*0.3;
     	}
     	
     	if (Robot.flipped) {
-    		driveTrain.tankDrive(-leftSpeed, -rightSpeed);
+    		driveTrain.tankDrive(-leftFinal, -rightFinal);
     	} else {
-    		driveTrain.tankDrive(rightSpeed, leftSpeed);
+    		driveTrain.tankDrive(rightFinal, leftFinal);
     	}
 	}
 }
-
-/*package org.usfirst.frc.team4729.robot.subsystems;
-
-import org.usfirst.frc.team4729.robot.Robot;
-
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-/**
- *
- */
-/*
-public class DriveSubsystem extends Subsystem {
-	RobotDrive driveTrain = new RobotDrive(0, 1);
-	
-	double leftSpeed = 0;
-	double rightSpeed = 0;
-	double turnSpeed = 0;
-	double moveSpeed = 0;
-	
-	double acceleration = 0.05;
-	double speed = 1;
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
-    public void arcade(double desiredMove, double desiredTurn) {
-    	if ((desiredMove < 0.1) && (desiredMove > -0.1)){
-    		desiredMove = 0;
-    		moveSpeed = 0;
-    	}
-    	if ((desiredTurn < 0.1) && (desiredTurn > -0.1)){
-    		desiredTurn = 0;
-    		turnSpeed = 0;
-    	}
-    	
-    	if  (((desiredMove > 0) && (moveSpeed < 0)) || ((desiredMove < 0) && (moveSpeed > 0))){
-    		moveSpeed = 0;
-    	}
-    	if (((desiredTurn > 0) && (turnSpeed < 0)) || ((desiredTurn < 0) && (turnSpeed > 0))){
-    		turnSpeed = 0;
-    	}
-    	
-    	if (Math.abs(desiredMove) < Math.abs(turnSpeed)){
-    		moveSpeed = desiredMove;
-    	}
-    	
-    	if (Math.abs(desiredTurn) < Math.abs(turnSpeed)) {
-    		turnSpeed = desiredTurn;
-    	}
-    	
-    	turnSpeed += (desiredTurn-turnSpeed)*acceleration;
-    	moveSpeed += (desiredMove-moveSpeed)*acceleration;
-    	driveTrain.arcadeDrive(-moveSpeed*speed, -turnSpeed*speed);
-    }
-    
-    
-    
-    public void tank (double desiredLeft, double desiredRight) {
-    	if ((desiredLeft < 0.1) && (desiredLeft > -0.1)){
-    		desiredLeft = 0;
-    		leftSpeed = 0;
-    	}
-    	if ((desiredRight < 0.1) && (desiredRight > -0.1)){
-    		desiredRight = 0;
-    		rightSpeed = 0;
-    	}
-    	
-    	if  (((desiredLeft > 0) && (leftSpeed < 0)) || ((desiredLeft < 0) && (leftSpeed > 0))){
-    		leftSpeed = 0;
-    	}
-    	if (((desiredRight > 0) && (rightSpeed < 0)) || ((desiredRight < 0) && (rightSpeed > 0))){
-    		rightSpeed = 0;
-    	}
-    	
-    	if (Math.abs(desiredLeft) < Math.abs(leftSpeed)){
-    		leftSpeed = desiredLeft;
-    	}
-    	
-    	if (Math.abs(desiredRight) < Math.abs(rightSpeed)) {
-    		rightSpeed = desiredRight;
-    	}
-    	rightSpeed += (desiredRight-rightSpeed)*acceleration;
-    	leftSpeed += (desiredLeft-leftSpeed)*acceleration;
-	}
-    
-}*/

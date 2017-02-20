@@ -20,6 +20,11 @@
 #include <geometry_msgs/Twist.h>
 //#include <ros/serialization.h>
 
+typedef struct _message_parts {
+	char part1[256];
+	char part2[256];
+} message_parts;
+
 int socket_num;
 
 void send_message(/*const geometry_msgs::Twist::ConstPtr& msg*/ const char* msg) {
@@ -61,6 +66,22 @@ void receive_message() {
             std::cout << "buffer is" << buffer << "readResult is" << readResult << std::endl;
         }
     }
+}
+
+struct_essage_parts *decode_message(char *message) {
+	message_parts *parts = (message_type *) malloc(sizeof(message_parts));
+	int colonIndex = 0;
+	while (message[colonIndex] != ':' && message[colonIndex] != '\0') {
+		colonIndex++;
+	}
+	if (message[colonIndex] == '\0') {
+		parts = NULL;	
+	} else {
+		message[colonIndex] = '\0';
+		strncpy(parts->part1, message, 256);
+		strncpy(parts->part2, &(message[colonIndex+1]), 256);
+	}
+	return parts;
 }
 
 int bridge_setup()
