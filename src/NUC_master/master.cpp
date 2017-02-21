@@ -32,7 +32,13 @@ int main() {
 			}
 			image_update();
 			char to_send[256];
-			sprintf(to_send, "%f:%f", image_get_distance(), image_get_x());
+      float distance = image_get_distance();
+      float x = image_get_x();
+      if (distance == NULL && x == NULL){
+        sprintf(to_send, "NULL");
+      } else {
+        sprintf(to_send, "%f:%f", image_get_distance(), image_get_x());
+      }
       printf("Sending '%s'\n", to_send);
 			send_message(to_send);
 		}

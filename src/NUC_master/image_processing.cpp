@@ -138,6 +138,9 @@ Mat contours(Mat current, Mat original){
 		actualX = (original.size().width/2)-((rect1.center.x+rect2.center.x)/2)*-1; //Not sure why we need *-1, but it seems to make it work
 		//printf("%f mm\n",actualDistance);
 		line(newcurr,rect1.center,rect2.center,Scalar(255,255,255),6);
+	} else {
+		actualDistance = NULL;
+		actualX = NULL;
 	}
 	return newcurr;
 }
