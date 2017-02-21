@@ -1,0 +1,8 @@
+Master:
+  master.cpp S
+  bridge.cpp
+  image_processing.cpp
+  auto_logic.cpp ! B
+  teleop_auto.cpp !
+  auto_utils.cpp ! L
+    line_up(mode,robot_angle,boiler_angle)

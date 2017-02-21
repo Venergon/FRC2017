@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4729.robot.commands.AutonomousGroup;
 import org.usfirst.frc.team4729.robot.commands.TestNucOutput;
 import org.usfirst.frc.team4729.robot.commands.TwoStickArcade;
 import org.usfirst.frc.team4729.robot.subsystems.ClimbSubsystem;
@@ -32,23 +33,30 @@ public class Robot extends IterativeRobot {
 	public static FuelSubsystem fuelSubsystem;
 	public static OI oi;
 	public static SendableChooser nucConnectedChooser;
+	public static int BLUE;
+	public static int RED;
 	
 	public static boolean nucConnected;
 	
 	public static boolean flipped;
 
-    Command autonomousCommand = null;
+    Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+    	autonomousCommand = new AutonomousGroup();
+    	
     	driveSubsystem = new DriveSubsystem();
     	climbSubsystem = new ClimbSubsystem();
     	fuelSubsystem = new FuelSubsystem();
 		oi = new OI();
 		flipped = false;
+		
+		BLUE = 0;
+		RED = 1;
 //		nucConnectedChooser = new SendableChooser();
 //		nucConnectedChooser.addDefault("Yes", true);
 //		nucConnectedChooser.addObject("No", false);
@@ -64,12 +72,11 @@ public class Robot extends IterativeRobot {
     	//nucConnected = (boolean) nucConnectedChooser.getSelected();
     	SmartDashboard.putBoolean("nucConnected", nucConnected);
     	tcpSubsystem = new TCPSubsystem(1917);
-    	
+   	
     	TestNucOutput testNucOutput = new TestNucOutput();
     	testNucOutput.start();
-        
-    	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+    	if (autonomousCommand != null) autonomousCommand.start();
+        //if (autonomousCommand != null) autonomousCommand.start(BLUE);
     }
 
     /**

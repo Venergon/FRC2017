@@ -15,10 +15,13 @@
 #include <iostream>
 #include <string.h>
 #include <assert.h>
+#include <stdio.h>
 #include <sys/ioctl.h>
 
 #include <geometry_msgs/Twist.h>
 //#include <ros/serialization.h>
+#include "bridge.h"
+
 
 int socket_num;
 
@@ -63,7 +66,7 @@ int receive_message(char *buffer, int buffer_size) {
 
 int decode_message(const char *message, message_parts *parts) {
 	if (sscanf(message, "%s:%s", parts->part1, parts->part2) == 2) {
-		return 2;     
+		return 2;
 	}
 	return 0;
 }

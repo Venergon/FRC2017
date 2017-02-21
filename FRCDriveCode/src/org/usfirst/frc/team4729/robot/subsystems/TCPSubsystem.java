@@ -68,6 +68,13 @@ public class TCPSubsystem extends Subsystem {
 		}
 	}
 	
+	public String[] requestImageData() {
+		Robot.tcpSubsystem.sendPacket("ball\n");
+    	String message = Robot.tcpSubsystem.receivePacket();
+    	String data[] = message.split(":");
+    	return data;
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
