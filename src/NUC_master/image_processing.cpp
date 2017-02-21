@@ -25,7 +25,7 @@ int image_mode;
 
 int image_setup()
 {
-	cap = VideoCapture(0); // open the default camera
+	cap = VideoCapture(1); // open the default camera
 	if(!cap.isOpened())  // check if we succeeded
 		return EXIT_FAILURE;
 

@@ -14,8 +14,6 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
-
-
 	image_set_mode(IMAGE_MODE_SHIP);
 	//image_set_mode(IMAGE_MODE_SHIP);
 	while(1) {
@@ -32,7 +30,7 @@ int main() {
 			}
 			image_update();
 			char to_send[256];
-      if (tapeFound()) {
+      if (image_check()) {
         sprintf(to_send, "%f:%f", image_get_distance(), image_get_x());
       } else {
         sprintf(to_send, " ");

@@ -12,6 +12,7 @@ cv::Mat contours(cv::Mat current, cv::Mat original);
 void image_update();
 float image_get_distance();
 float image_get_x();
+bool image_check();
 int image_setup();
 void image_set_mode(int mode);
 #define IMAGE_MODE_SHIP 0
