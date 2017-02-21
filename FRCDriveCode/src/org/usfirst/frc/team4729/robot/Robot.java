@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4729.robot.commands.TestNucOutput;
 import org.usfirst.frc.team4729.robot.commands.TwoStickArcade;
 import org.usfirst.frc.team4729.robot.subsystems.ClimbSubsystem;
 import org.usfirst.frc.team4729.robot.subsystems.DriveSubsystem;
@@ -36,7 +37,7 @@ public class Robot extends IterativeRobot {
 	
 	public static boolean flipped;
 
-    Command autonomousCommand;
+    Command autonomousCommand = null;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -60,10 +61,14 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-    	nucConnected = (boolean) nucConnectedChooser.getSelected();
+    	//nucConnected = (boolean) nucConnectedChooser.getSelected();
     	SmartDashboard.putBoolean("nucConnected", nucConnected);
     	tcpSubsystem = new TCPSubsystem(1917);
-        // schedule the autonomous command (example)
+    	
+    	TestNucOutput testNucOutput = new TestNucOutput();
+    	testNucOutput.start();
+        
+    	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
