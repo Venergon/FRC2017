@@ -68,11 +68,18 @@ public class TCPSubsystem extends Subsystem {
 		}
 	}
 	
-	public String[] requestImageData() {
+	public float[] requestImageData() {
 		Robot.tcpSubsystem.sendPacket("ball\n");
     	String message = Robot.tcpSubsystem.receivePacket();
-    	String data[] = message.split(":");
-    	return data;
+    	if (message.contains(":")) {
+	    	String[] stringData = message.split(":");
+	    	float[] data = new float[2];
+	    	data[0] = Float.parseFloat(stringData[0]);
+	    	data[1] = Float.parseFloat(stringData[1]);
+	    	return data;
+    	} else {
+    		return null;
+    	}
 	}
 	
     public void initDefaultCommand() {

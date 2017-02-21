@@ -18,6 +18,7 @@ using namespace cv;
 bool cmp(vector<Point> a, vector<Point> b);
 float actualDistance;
 float actualX;
+bool tapeFound = false;
 VideoCapture cap;
 
 int image_mode;
@@ -136,11 +137,11 @@ Mat contours(Mat current, Mat original){
 			actualDistance = (ACTUAL_BOILER*FOCAL)/distance;
 		}
 		actualX = (original.size().width/2)-((rect1.center.x+rect2.center.x)/2)*-1; //Not sure why we need *-1, but it seems to make it work
+		tapeFound = true;
 		//printf("%f mm\n",actualDistance);
 		line(newcurr,rect1.center,rect2.center,Scalar(255,255,255),6);
 	} else {
-		actualDistance = std::numeric_limits<float>::max();
-		actualX = std::numeric_limits<float>::max();
+		tapeFound = false;
 	}
 	return newcurr;
 }
@@ -158,4 +159,8 @@ float image_get_distance()
 
 float image_get_x() {
 	return actualX;
+}
+
+bool image_check() {
+	return tapeFound;
 }

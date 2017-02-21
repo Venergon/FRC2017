@@ -22,19 +22,28 @@ public class AutoCurveToHopper extends Command {
 	int STAGE_MOVE_BACK;
 	int STAGE_CURVE;
 	int STAGE_GO_UNTIL_HOPPER;
+	int STAGE_TURN_TO_HOPPER;
+	int STAGE_DONE;
 	
 	float DISTANCE_MOVE_BACK;
+	float DISTANCE_TO_HOPPER;
+	int ANGLE_TO_HOPPER;
 	
     public AutoCurveToHopper() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_A, RobotMap.ENCODER_LEFT_B, false, Encoder.EncodingType.k4X);
     	rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_A, RobotMap.ENCODER_RIGHT_B, false, Encoder.EncodingType.k4X);
+    	
     	DISTANCE_MOVE_BACK = 3; // Change this
+    	DISTANCE_TO_HOPPER = 3; // Change this
+    	ANGLE_TO_HOPPER = 90;
     	
     	STAGE_MOVE_BACK = 0;
     	STAGE_CURVE = 1;
     	STAGE_GO_UNTIL_HOPPER = 2;
+    	STAGE_TURN_TO_HOPPER = 3;
+    	STAGE_DONE = 4;
     	
     	stage = STAGE_MOVE_BACK;
     	
@@ -62,12 +71,23 @@ public class AutoCurveToHopper extends Command {
     			stage = STAGE_GO_UNTIL_HOPPER;
     		}
     	} else if (stage == STAGE_GO_UNTIL_HOPPER) {
-    		
+    		if ((leftEncoder.getDistance()+rightEncoder.getDistance())/2 > DISTANCE_TO_HOPPER) {
+	    		Robot.driveSubsystem.tank(-1, 1);
+	    		stage = STAGE_TURN_TO_HOPPER;
+	    	}
+    	} else if (stage == STAGE_TURN_TO_HOPPER) {
+    		if (Math.abs(gyro.getAngle()-ANGLE_TO_HOPPER) < 10) {
+    			Robot.driveSubsystem.tank(0, 0);
+    			stage = STAGE_DONE;
+    		}
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if (stage == STAGE_DONE) {
+    		return true;
+    	}
         return false;
     }
 

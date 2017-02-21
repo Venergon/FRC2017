@@ -32,12 +32,10 @@ int main() {
 			}
 			image_update();
 			char to_send[256];
-      float distance = image_get_distance();
-      float x = image_get_x();
-      if (distance == std::numeric_limits<float>::max() && x == std::numeric_limits<float>::max()){
-        sprintf(to_send, "NULL");
-      } else {
+      if (tapeFound()) {
         sprintf(to_send, "%f:%f", image_get_distance(), image_get_x());
+      } else {
+        sprintf(to_send, " ");
       }
       printf("Sending '%s'\n", to_send);
 			send_message(to_send);
