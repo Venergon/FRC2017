@@ -139,8 +139,8 @@ Mat contours(Mat current, Mat original){
 		//printf("%f mm\n",actualDistance);
 		line(newcurr,rect1.center,rect2.center,Scalar(255,255,255),6);
 	} else {
-		actualDistance = NULL;
-		actualX = NULL;
+		actualDistance = std::numeric_limits<float>::max();
+		actualX = std::numeric_limits<float>::max();
 	}
 	return newcurr;
 }

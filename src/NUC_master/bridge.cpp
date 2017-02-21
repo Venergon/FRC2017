@@ -42,7 +42,7 @@ void create_socket() {
     struct sockaddr_in *address = (sockaddr_in *) malloc (sizeof(struct sockaddr_in)); //malloc = create object
     address->sin_family = AF_INET;
     address->sin_port = htons(1917);
-    inet_aton("127.0.0.1", &(address->sin_addr));
+    inet_aton(/*"10.47.29.64"*/"127.0.0.1", &(address->sin_addr));
     int connectSuccess = -1;
     while (connectSuccess == -1) {
         connectSuccess = connect(socket_num, (sockaddr *) address, sizeof(struct sockaddr_in));

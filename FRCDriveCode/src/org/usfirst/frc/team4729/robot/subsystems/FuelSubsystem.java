@@ -29,7 +29,7 @@ public class FuelSubsystem extends Subsystem {
     	intake.set(0);
     }
     
-    public void shoot() {
+    public void startShooting() {
     	shooter.set(0.75);
     	preloader.set(1);
     }

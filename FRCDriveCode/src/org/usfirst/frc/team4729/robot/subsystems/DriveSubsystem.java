@@ -3,15 +3,17 @@ package org.usfirst.frc.team4729.robot.subsystems;
 import org.usfirst.frc.team4729.robot.Robot;
 import org.usfirst.frc.team4729.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class DriveSubsystem extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     RobotDrive driveTrain = new RobotDrive(RobotMap.LEFT_DRIVE, RobotMap.RIGHT_DRIVE);
-    
+    public AnalogGyro gyro;
 
 	double leftSpeed = 0;
 	double rightSpeed = 0;
@@ -27,6 +29,8 @@ public class DriveSubsystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	gyro = new AnalogGyro(RobotMap.GYRO);
+    	gyro.calibrate();
     }
 	
     public void arcade(double desiredMove, double desiredTurn) {

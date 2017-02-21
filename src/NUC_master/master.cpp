@@ -34,7 +34,7 @@ int main() {
 			char to_send[256];
       float distance = image_get_distance();
       float x = image_get_x();
-      if (distance == NULL && x == NULL){
+      if (distance == std::numeric_limits<float>::max() && x == std::numeric_limits<float>::max()){
         sprintf(to_send, "NULL");
       } else {
         sprintf(to_send, "%f:%f", image_get_distance(), image_get_x());
