@@ -33,7 +33,7 @@ public class TCPSubsystem extends Subsystem {
 			}
 		}
 	}
-	
+
 	public String receivePacket() {
 		if (Robot.nucConnected) {
 			try {
@@ -41,7 +41,7 @@ public class TCPSubsystem extends Subsystem {
 					connectionSocket.getInputStream()));
 				String clientSentence = inFromClient.readLine();
 				return clientSentence;
-			
+
 			} catch (IOException e) {
 				SmartDashboard.putString("connection error", "error reicing packet");
 				return null;
@@ -51,7 +51,7 @@ public class TCPSubsystem extends Subsystem {
 			return null;
 		}
 	}
-	
+
 	public void sendPacket(String msg) {
 		SmartDashboard.putString("blah", "blah");
 
@@ -67,13 +67,14 @@ public class TCPSubsystem extends Subsystem {
 			SmartDashboard.putString("connection error", "not using nuc");
 		}
 	}
-	
+
 	public float[] requestImageData() {
 		Robot.tcpSubsystem.sendPacket("ball\n");
     	String message = Robot.tcpSubsystem.receivePacket();
     	if (message.contains(":")) {
 	    	String[] stringData = message.split(":");
 	    	float[] data = new float[2];
+				//data[0] is the distance, data[1] is the x position
 	    	data[0] = Float.parseFloat(stringData[0]);
 	    	data[1] = Float.parseFloat(stringData[1]);
 	    	return data;
@@ -81,10 +82,9 @@ public class TCPSubsystem extends Subsystem {
     		return null;
     	}
 	}
-	
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
 }
-
