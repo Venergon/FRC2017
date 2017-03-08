@@ -15,22 +15,39 @@ public class AutoTurnToBoiler extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+      double TOO_FAR = 10;
+      double TOO_CLOSE = 10;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    //go forward, turn left, go forward, turn intill see the boiler
-    //data[0] is the distance, data[1] is the x position
-    //get distance and x position
-    float[] distancex = Robot.tcpSubsystem.requestImageData();
-    float distance = distancex[0];
-    float iamx = distancex[1];
-    //if not in centre, turn
-    float center = CAMERA_WIDTH/2;
-    if(distance > center-1 && distance < center+1) {
-    }
-    //if not close enough, go forward
-    //if close enough, stop
+      boolean ifFinished = false;
+      //data[0] is the distance, data[1] is the x position
+
+      //get distance and x position
+      while (ifFinished == false) {
+        float[] distancex = Robot.tcpSubsystem.requestImageData();
+        float distance = distancex[0];
+        float iamx = distancex[1];
+        //if not in centre, turn
+        float center = CAMERA_WIDTH/2;
+        if (iamx > center-1 && iamx < center+1) {
+          if (distance > TOO_FAR) { //if to far, go forwards
+            Robot.driveSubsystem.arcade(1, 0);
+          } else if (distance < TOO_CLOSE) { //if not close enough, go backwards
+            Robot.driveSubsystem.arcade(-1,0);
+          } else { //if close enough, stop
+            Robot.driveSubsystem.arcade(0,0);
+            ifFinished = true;
+          }
+        } else { //if not in center
+          if (iamx < center+1) { //if facing left
+            Robot.driveSubsystem.arcade(0,1);
+          } else { //if facing right
+            Robot.driveSubsystem.arcade(0,-1);
+          }
+        }
+      }
     }
 
     // Make this return true when this Command no longer needs to run execute()
