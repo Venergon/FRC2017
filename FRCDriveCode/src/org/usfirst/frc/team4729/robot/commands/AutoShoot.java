@@ -2,7 +2,7 @@ package org.usfirst.frc.team4729.robot.commands;
 
 import org.usfirst.frc.team4729.robot.Robot;
 import org.usfirst.frc.team4729.robot.RobotMap;
-import org.usfirst.frc.team4729.robot.subsystems.ShootSubsystem;
+import org.usfirst.frc.team4729.robot.subsystems.FuelSubsystem;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;

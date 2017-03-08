@@ -57,13 +57,13 @@ public class AutoCurveToHopper extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-			while (!(leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_MOVE_BACK)) {
+			while (!((leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_MOVE_BACK)) {
 				Robot.driveSubsystem.tank(-1,-1);
 			}
 			while (Math.abs(gyro.getAngle()-0) < 10) {
     		Robot.driveSubsystem.tank(1, 0.5);
 			}
-  		while ((leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_TO_HOPPER)) {
+  		while ((leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_TO_HOPPER) {
   			Robot.driveSubsystem.tank(1, 1);
   			leftEncoder.reset();
   			rightEncoder.reset();

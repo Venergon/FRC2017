@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeFromGround extends Command {
+public class Intake extends Command {
 
-    public IntakeFromGround() {
+    public Intake() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

@@ -27,7 +27,7 @@ public class AutoMoveForward extends Command {
     	leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_A, RobotMap.ENCODER_LEFT_B, false, Encoder.EncodingType.k4X);
     	rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_A, RobotMap.ENCODER_RIGHT_B, false, Encoder.EncodingType.k4X);
     	DISTANCE_MOVE_FORWARD = 3; // Change this -Luke Fisk-Lennon
-			while (leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_MOVE_FORWARD) {
+			while ((leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_MOVE_FORWARD) {
 				Robot.driveSubsystem.tank(1,1);
 			}
 			Robot.driveSubsystem.tank(0,0);

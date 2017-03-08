@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4729.robot.commands;
 
+import org.usfirst.frc.team4729.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -7,7 +9,15 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoTurnToBoiler extends Command {
 
+    double TOO_FAR;
+    double TOO_CLOSE;
+    float CAMERA_WIDTH;
+
+
     public AutoTurnToBoiler() {
+    	TOO_FAR = 10;
+    	TOO_CLOSE = 10;
+    	CAMERA_WIDTH = 10;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -15,8 +25,6 @@ public class AutoTurnToBoiler extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-      double TOO_FAR = 10;
-      double TOO_CLOSE = 10;
     }
 
     // Called repeatedly when this Command is scheduled to run

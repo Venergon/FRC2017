@@ -21,21 +21,21 @@ public class FuelSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-    public void floorIntake() {
+    public void intake() {
     	intake.set(-1);
     }
 
-    public void stopFloorIntake() {
+    public void stopIntake() {
     	intake.set(0);
     }
 
-		public void preIntake() {
-			preloader.set(1);
-		}
+	public void preIntake() {
+		preloader.set(1);
+	}
 
-		public void stopPreIntake() {
-			preloader.set(0);
-		}
+	public void stopPreIntake() {
+		preloader.set(0);
+	}
 
     public void startShooting() {
     	shooter.set(0.75);
@@ -44,3 +44,4 @@ public class FuelSubsystem extends Subsystem {
     public void stopShooting() {
     	shooter.set(0);
     }
+}

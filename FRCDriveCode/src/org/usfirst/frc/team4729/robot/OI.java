@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4729.robot.commands.Climb;
-import org.usfirst.frc.team4729.robot.commands.IntakeFromGround;
+import org.usfirst.frc.team4729.robot.commands.Intake;
 import org.usfirst.frc.team4729.robot.commands.PreIntake;
 import org.usfirst.frc.team4729.robot.commands.Flip;
 import org.usfirst.frc.team4729.robot.commands.OneStickArcade;
@@ -71,7 +71,7 @@ public class OI {
     Button r3            = new JoystickButton(xbox,       10);
 
     public OI() {
-    	button1.whileHeld  (new IntakeFromGround());
+    	button1.whileHeld  (new Intake());
     	button2.whenPressed (new OneStickTank(leftStick));
     	button3.whenPressed (new TwoStickTank(leftStick, rightStick));
     	button4.whenPressed (new OneStickArcade(leftStick));
@@ -94,7 +94,7 @@ public class OI {
     	//rightButton10.whileHeld ();
     	//rightButton11.whileHeld ();
     	//a.whileHeld ();
-    	b.whileHeld (new IntakeFromGround());
+    	b.whileHeld (new Intake());
     	x.whileHeld (new Shoot());
     	y.whileHeld (new Climb(xbox));
     	//lb.whileHeld ();
