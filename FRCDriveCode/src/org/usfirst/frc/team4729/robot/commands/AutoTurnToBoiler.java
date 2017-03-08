@@ -27,6 +27,10 @@ public class AutoTurnToBoiler extends Command {
       //get distance and x position
       while (ifFinished == false) {
         float[] distancex = Robot.tcpSubsystem.requestImageData();
+        if (distancex == null) { // '==' = is
+          Robot.driveSubsystem.arcade(0,1);
+          continue;
+        }
         float distance = distancex[0];
         float iamx = distancex[1];
         //if not in centre, turn

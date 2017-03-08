@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class AutoShoot extends Command {
-	
+
 	Timer timer;
 
     public AutoShoot() {
@@ -26,6 +26,10 @@ public class AutoShoot extends Command {
     protected void initialize() {
     	Robot.fuelSubsystem.startShooting();
     	timer.start();
+			while(timer.get() < 5) {
+				//wait
+			}
+			Robot.fuelSubsystem.stopShooting();
     }
 
     // Called repeatedly when this Command is scheduled to run

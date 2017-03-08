@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class AutoMoveForward extends Command {
-	
+
 	Encoder leftEncoder;
 	Encoder rightEncoder;
-	
+
 	float DISTANCE_MOVE_FORWARD;
-	
+
     public AutoMoveForward() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -26,13 +26,16 @@ public class AutoMoveForward extends Command {
     protected void initialize() {
     	leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_A, RobotMap.ENCODER_LEFT_B, false, Encoder.EncodingType.k4X);
     	rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_A, RobotMap.ENCODER_RIGHT_B, false, Encoder.EncodingType.k4X);
-    	DISTANCE_MOVE_FORWARD = 3; // Change this
-    	Robot.driveSubsystem.tank(1,1);
+    	DISTANCE_MOVE_FORWARD = 3; // Change this -Luke Fisk-Lennon
+			while (leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_MOVE_FORWARD) {
+				Robot.driveSubsystem.tank(1,1);
+			}
+			Robot.driveSubsystem.tank(0,0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
