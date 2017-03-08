@@ -5,7 +5,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4729.robot.commands.Climb;
-import org.usfirst.frc.team4729.robot.commands.Feed;
+import org.usfirst.frc.team4729.robot.commands.IntakeFromGround;
+import org.usfirst.frc.team4729.robot.commands.PreIntake;
 import org.usfirst.frc.team4729.robot.commands.Flip;
 import org.usfirst.frc.team4729.robot.commands.OneStickArcade;
 import org.usfirst.frc.team4729.robot.commands.OneStickTank;
@@ -28,7 +29,7 @@ import org.usfirst.frc.team4729.robot.commands.TwoStickTank;
  */
 
  /**
- * 
+ *
  * @author FRC
  *
  */
@@ -68,9 +69,9 @@ public class OI {
     Button select        = new JoystickButton(xbox,       8);
     Button l3            = new JoystickButton(xbox,       9);
     Button r3            = new JoystickButton(xbox,       10);
-    
+
     public OI() {
-    	button1.whileHeld  (new Feed());
+    	button1.whileHeld  (new IntakeFromGround());
     	button2.whenPressed (new OneStickTank(leftStick));
     	button3.whenPressed (new TwoStickTank(leftStick, rightStick));
     	button4.whenPressed (new OneStickArcade(leftStick));
@@ -82,7 +83,7 @@ public class OI {
     	//button10.whileHeld ();
     	//button11.whileHeld ();
     	rightButton1.whileHeld (new Shoot());
-    	//rightButton2.whileHeld ();
+    	rightButton2.whileHeld (new PreIntake());
     	rightButton3.whileHeld(new Flip());
     	//rightButton4.whileHeld ();
     	//rightButton5.whileHeld ();
@@ -93,7 +94,7 @@ public class OI {
     	//rightButton10.whileHeld ();
     	//rightButton11.whileHeld ();
     	//a.whileHeld ();
-    	b.whileHeld (new Feed());
+    	b.whileHeld (new IntakeFromGround());
     	x.whileHeld (new Shoot());
     	y.whileHeld (new Climb(xbox));
     	//lb.whileHeld ();
@@ -102,8 +103,8 @@ public class OI {
     	//select.whileHeld();
     	//l3.whileHeld ();
     	//r3.whileHeld ();
-    	
-    	
+
+
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -111,25 +112,24 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
-    
+
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
-    
+
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
     // three ways:
-    
+
     // Start the command when the button is pressed and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenPressed(new ExampleCommand());
-    
+
     // Run the command while the button is being held down and interrupt it once
     // the button is released.
     // button.whileHeld(new ExampleCommand());
-    
+
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 }
-

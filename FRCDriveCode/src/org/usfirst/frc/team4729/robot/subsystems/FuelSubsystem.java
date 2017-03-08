@@ -15,27 +15,32 @@ public class FuelSubsystem extends Subsystem {
 	Talon preloader = new Talon(RobotMap.PRELOADER);
 	Talon shooter = new Talon(RobotMap.SHOOTER);
 	Talon intake = new Talon(RobotMap.INTAKE);
-	
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    
-    public void intake() {
+
+    public void floorIntake() {
     	intake.set(-1);
     }
-    
-    public void stopIntake() {
+
+    public void stopFloorIntake() {
     	intake.set(0);
     }
-    
+
+		public void preIntake() {
+			preloader.set(1);
+		}
+
+		public void stopPreIntake() {
+			preloader.set(0);
+		}
+
     public void startShooting() {
     	shooter.set(0.75);
-    	preloader.set(1);
     }
-    
+
     public void stopShooting() {
     	shooter.set(0);
-    	preloader.set(0);
     }
-}
