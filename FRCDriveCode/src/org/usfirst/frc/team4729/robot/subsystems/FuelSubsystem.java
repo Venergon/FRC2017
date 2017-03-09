@@ -38,7 +38,7 @@ public class FuelSubsystem extends Subsystem {
 	}
 
     public void startShooting() {
-    	shooter.set(0.75);
+    	shooter.set(0.5);
     }
 
     public void stopShooting() {

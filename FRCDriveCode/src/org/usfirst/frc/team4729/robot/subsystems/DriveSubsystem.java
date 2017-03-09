@@ -47,7 +47,7 @@ public class DriveSubsystem extends Subsystem {
     	
     	if (Math.abs(moveSpeed) > DEADZONE) {
     		moveFinal = moveSpeed*0.7+moveSpeed/Math.abs(moveSpeed)*0.3;
-    		turnFinal = turnSpeed;
+    		turnFinal = turnSpeed/Math.abs(turnSpeed)*Math.sqrt(Math.abs(turnSpeed));
     	}
     	else  if (Math.abs(turnSpeed) > DEADZONE) {
     		moveFinal = 0;
