@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoMoveForward extends Command {
 
-	Encoder leftEncoder;
-	Encoder rightEncoder;
 
 	float DISTANCE_MOVE_FORWARD;
 
@@ -24,10 +22,9 @@ public class AutoMoveForward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_A, RobotMap.ENCODER_LEFT_B, false, Encoder.EncodingType.k4X);
-    	rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_A, RobotMap.ENCODER_RIGHT_B, false, Encoder.EncodingType.k4X);
+        Robot.driveSubsystem.encoderReset();
     	DISTANCE_MOVE_FORWARD = 3; // Change this -Luke Fisk-Lennon
-			while ((leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_MOVE_FORWARD) {
+			while ((Robot.driveSubsystem.leftDistance()+Robot.driveSubsystem.rightDistance())/2 < DISTANCE_MOVE_FORWARD) {
 				Robot.driveSubsystem.tank(1,1);
 			}
 			Robot.driveSubsystem.tank(0,0);
@@ -40,7 +37,7 @@ public class AutoMoveForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if ((leftEncoder.getDistance()+rightEncoder.getDistance())/2 > DISTANCE_MOVE_FORWARD) {
+    	if ((Robot.driveSubsystem.leftDistance() + Robot.driveSubsytem.rightDistance())/2 > DISTANCE_MOVE_FORWARD) {
 			return true;
     	}
 		return false;

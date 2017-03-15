@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class AutoCurveToHopper extends Command {
 
-	Encoder leftEncoder;
-	Encoder rightEncoder;
 	public AnalogGyro gyro;
 
 	int stage;
@@ -32,8 +30,6 @@ public class AutoCurveToHopper extends Command {
     public AutoCurveToHopper() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_A, RobotMap.ENCODER_LEFT_B, false, Encoder.EncodingType.k4X);
-    	rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_A, RobotMap.ENCODER_RIGHT_B, false, Encoder.EncodingType.k4X);
 
     	DISTANCE_MOVE_BACK = 3; // Change this
     	DISTANCE_TO_HOPPER = 3; // Change this
@@ -51,19 +47,20 @@ public class AutoCurveToHopper extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        Robot.driveSubsystem.encoderReset();
     	gyro = new AnalogGyro(RobotMap.GYRO);
     	gyro.calibrate();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-			while (!((leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_MOVE_BACK)) {
+			while (!((Robot.driveSubsystem.leftDistance() + Robot.driveSubsystem.rightDistance())/2 < DISTANCE_MOVE_BACK)) {
 				Robot.driveSubsystem.tank(-1,-1);
 			}
 			while (Math.abs(gyro.getAngle()-0) < 10) {
     		Robot.driveSubsystem.tank(1, 0.5);
 			}
-  		while ((leftEncoder.getDistance()+rightEncoder.getDistance())/2 < DISTANCE_TO_HOPPER) {
+  		while ((Robot.driveSubsystem.leftDistance() + Robot.driveSubsystem.rightDistance())/2 < DISTANCE_TO_HOPPER) {
   			Robot.driveSubsystem.tank(1, 1);
   			leftEncoder.reset();
   			rightEncoder.reset();

@@ -14,8 +14,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class BasicAutoMoveToHopper extends Command {
 
-	Encoder leftEncoder;
-	Encoder rightEncoder;
 	public AnalogGyro gyro;
 	Timer timer;
 
@@ -38,6 +36,7 @@ public class BasicAutoMoveToHopper extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        Robot.driveSubsystem.encoderReset();
     	gyro = new AnalogGyro(RobotMap.GYRO);
     	gyro.calibrate();
     	timer.start();

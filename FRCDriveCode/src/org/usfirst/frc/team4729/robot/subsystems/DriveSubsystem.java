@@ -12,6 +12,8 @@ public class DriveSubsystem extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    Encoder leftEncoder;
+    Encoder rightEncoder
     RobotDrive driveTrain = new RobotDrive(RobotMap.LEFT_DRIVE, RobotMap.RIGHT_DRIVE);
     public AnalogGyro gyro;
 
@@ -31,8 +33,25 @@ public class DriveSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	gyro = new AnalogGyro(RobotMap.GYRO);
     	gyro.calibrate();
+
+        leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_A, RobotMap.ENCODER_LEFT_B, false, Encoder.EncodingType.k4X);
+        rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_A, RobotMap.ENCODER_RIGHT_B, false, Encoder.EncodingType.k4X);
+
     }
-	
+
+    public double leftDistance() {
+        return leftEncoder.getDistance();
+    }
+
+    public double rightDistance() {
+        return rightEncoder.getDistance();
+    }
+
+    public void encoderReset() {
+        leftEncoder.reset();
+        rightEncoder.reset();
+    }
+
     public void arcade(double desiredMove, double desiredTurn) {
     	if (Math.abs(desiredMove) < Math.abs(moveSpeed)){
     		moveSpeed = desiredMove;
