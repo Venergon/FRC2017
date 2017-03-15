@@ -4,15 +4,18 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutonomousGroup extends CommandGroup {
 
-    public AutonomousGroup() {
+    public AutonomousGroup(boolean IsWorking) {
     	//This is a basic back-up version
-    	addSequential(new AutoShoot());
-    	addSequential(new BasicAutoMoveToHopper());
-    	//This is the actual version of the code
-    	/*addSequential(new AutoMoveForward());
-    	addSequential(new AutoTurnToBoiler());
-    	addSequential(new AutoShoot());
-    	addSequential(new AutoCurveToHopper());*/
+    	if (IsWorking == false) {
+    		addSequential(new AutoShoot());
+	    	addSequential(new BasicAutoMoveToHopper());
+    	} else {
+			//This is the actual version of the code
+			addSequential(new AutoMoveForward());
+			addSequential(new AutoTurnToBoiler());
+			addSequential(new AutoShoot());
+			addSequential(new AutoCurveToHopper());
+	  }
       // Add Commands here:
       // e.g. addSequential(new Command1());
       //      addSequential(new Command2());

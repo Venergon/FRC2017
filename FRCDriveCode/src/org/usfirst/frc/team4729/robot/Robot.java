@@ -32,9 +32,13 @@ public class Robot extends IterativeRobot {
 	public static ClimbSubsystem climbSubsystem;
 	public static FuelSubsystem fuelSubsystem;
 	public static OI oi;
-	public static SendableChooser nucConnectedChooser;
 	public static int BLUE;
 	public static int RED;
+	
+	
+	public static SendableChooser autoChooser;
+	public static boolean isWorking;
+	
 	
 	public static boolean nucConnected;
 	
@@ -47,7 +51,6 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	autonomousCommand = new AutonomousGroup();
     	
     	driveSubsystem = new DriveSubsystem();
     	climbSubsystem = new ClimbSubsystem();
@@ -57,6 +60,14 @@ public class Robot extends IterativeRobot {
 		
 		BLUE = 0;
 		RED = 1;
+		
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Complex(normal) auto code", true);
+		autoChooser.addObject("Boring(basic) auto code", false);
+		SmartDashboard.putData("automode", autoChooser);
+		
+		
+		
 //		nucConnectedChooser = new SendableChooser();
 //		nucConnectedChooser.addDefault("Yes", true);
 //		nucConnectedChooser.addObject("No", false);
@@ -69,6 +80,8 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
+    	boolean notBasic = (boolean) autoChooser.getSelected();
+    	autonomousCommand = new AutonomousGroup(notBasic);
     	//nucConnected = (boolean) nucConnectedChooser.getSelected();
     	SmartDashboard.putBoolean("nucConnected", nucConnected);
     	tcpSubsystem = new TCPSubsystem(1917);
