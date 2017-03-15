@@ -20,7 +20,7 @@ public class TCPSubsystem extends Subsystem {
 	ServerSocket serverSocket;
 	Socket connectionSocket;
 	public TCPSubsystem(int port) {
-		if (Robot.nucConnected){
+		if (Robot.nucConnected.equals("yes")){
 			SmartDashboard.putString("connection error", "None");
 			// Create a socket to listen on the port.
 			try {
@@ -35,7 +35,7 @@ public class TCPSubsystem extends Subsystem {
 	}
 
 	public String receivePacket() {
-		if (Robot.nucConnected) {
+		if (Robot.nucConnected.equals("yes")) {
 			try {
 				BufferedReader inFromClient = new BufferedReader(new InputStreamReader(
 					connectionSocket.getInputStream()));
@@ -55,7 +55,7 @@ public class TCPSubsystem extends Subsystem {
 	public void sendPacket(String msg) {
 		SmartDashboard.putString("blah", "blah");
 
-		if (Robot.nucConnected) {
+		if (Robot.nucConnected.equals("yes")) {
 			try {
 				DataOutputStream outToClient = new DataOutputStream(
 					connectionSocket.getOutputStream());

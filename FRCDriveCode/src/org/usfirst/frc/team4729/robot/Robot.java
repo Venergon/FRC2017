@@ -36,11 +36,11 @@ public class Robot extends IterativeRobot {
 	public static int RED;
 	
 	
-	public static SendableChooser autoChooser;
-	public static boolean isWorking;
+	public static SendableChooser<String> autoChooser;
+	public static boolean autoMode;
 	
-	
-	public static boolean nucConnected;
+	public static SendableChooser<String> nucConnectedChooser;
+	public static String nucConnected;
 	
 	public static boolean flipped;
 
@@ -61,17 +61,18 @@ public class Robot extends IterativeRobot {
 		BLUE = 0;
 		RED = 1;
 		
-		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Complex(normal) auto code", true);
-		autoChooser.addObject("Boring(basic) auto code", false);
+		autoChooser = new SendableChooser<String>();
+		autoChooser.addDefault("Shoot, then move to hopper", "shoot_then_hopper");
+		autoChooser.addObject("Smash that hopper, then shoot", "hopper_then_shoot");
+		autoChooser.addObject("Just go to the hopper", "just_hopper");
 		SmartDashboard.putData("automode", autoChooser);
 		
 		
 		
-//		nucConnectedChooser = new SendableChooser();
-//		nucConnectedChooser.addDefault("Yes", true);
-//		nucConnectedChooser.addObject("No", false);
-//		SmartDashboard.putData("nucConnected?", nucConnectedChooser);
+		nucConnectedChooser = new SendableChooser<String>();
+		nucConnectedChooser.addDefault("Yes", "yes");
+		nucConnectedChooser.addObject("No", "no");
+		SmartDashboard.putData("nucConnected?", nucConnectedChooser);
         // instantiate the command used for the autonomous period
     }
 	
@@ -80,10 +81,10 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-    	boolean notBasic = (boolean) autoChooser.getSelected();
+    	String notBasic = (String) autoChooser.getSelected();
     	autonomousCommand = new AutonomousGroup(notBasic);
-    	//nucConnected = (boolean) nucConnectedChooser.getSelected();
-    	SmartDashboard.putBoolean("nucConnected", nucConnected);
+    	nucConnected = (String) nucConnectedChooser.getSelected();
+    	SmartDashboard.putString("nucConnected", nucConnected);
     	tcpSubsystem = new TCPSubsystem(1917);
    	
     	TestNucOutput testNucOutput = new TestNucOutput();

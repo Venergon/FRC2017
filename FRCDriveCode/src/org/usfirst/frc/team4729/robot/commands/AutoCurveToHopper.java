@@ -62,8 +62,7 @@ public class AutoCurveToHopper extends Command {
 			}
   		while ((Robot.driveSubsystem.leftDistance() + Robot.driveSubsystem.rightDistance())/2 < DISTANCE_TO_HOPPER) {
   			Robot.driveSubsystem.tank(1, 1);
-  			leftEncoder.reset();
-  			rightEncoder.reset();
+  			Robot.driveSubsystem.encoderReset();
 			}
   		while (Math.abs(gyro.getAngle()-ANGLE_TO_HOPPER) > 10) {
     		Robot.driveSubsystem.tank(-1, 1);

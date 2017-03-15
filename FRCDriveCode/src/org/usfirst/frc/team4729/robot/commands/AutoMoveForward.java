@@ -37,7 +37,7 @@ public class AutoMoveForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if ((Robot.driveSubsystem.leftDistance() + Robot.driveSubsytem.rightDistance())/2 > DISTANCE_MOVE_FORWARD) {
+    	if ((Robot.driveSubsystem.leftDistance() + Robot.driveSubsystem.rightDistance())/2 > DISTANCE_MOVE_FORWARD) {
 			return true;
     	}
 		return false;
