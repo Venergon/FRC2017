@@ -1,21 +1,28 @@
 package org.usfirst.frc.team4729.robot.commands;
 
+import org.usfirst.frc.team4729.robot.Robot;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutonomousGroup extends CommandGroup {
+	Timer timer;
 
-    public AutonomousGroup(String mode) {
+    public AutonomousGroup(String mode, String team) {
     	if (mode.equals("shoot_then_hopper")) {
+    		addSequential(new PreFire());
+    		addSequential(new WaitAfterPreFire());
     		addSequential(new AutoShoot());
-	    	addSequential(new BasicAutoMoveToHopper());
+	    	addSequential(new BasicAutoMoveToHopperWithoutGyro(team, false));
     	} else if (mode.equals("hopper_then_shoot")) {
-			addSequential(new BasicAutoMoveToHopper());
-			//addSequential(new AutoTurnFromHopper());
-			//addSequential(new BasicAutoMoveToBoiler());
+    		addSequential(new PreFire());
+    		addSequential(new WaitAfterPreFire());
+			addSequential(new BasicAutoMoveToHopperWithoutGyro(team, true));
+			addSequential(new SmashHopper());
 			addSequential(new AutoTurnToBoiler());
 			addSequential(new AutoShoot());
     	} else if (mode.equals("just_hopper")) {
-    		addSequential(new BasicAutoMoveToHopper());
+    		addSequential(new BasicAutoMoveToHopperWithoutGyro(team, true));
     	}
       // Add Commands here:
       // e.g. addSequential(new Command1());

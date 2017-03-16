@@ -14,7 +14,7 @@ import org.usfirst.frc.team4729.robot.commands.ReceiveTCPPacket;
 import org.usfirst.frc.team4729.robot.commands.SendUDPPacket;
 //import org.usfirst.frc.team4729.robot.commands.ReceiveTCPPacket;
 //import org.usfirst.frc.team4729.robot.commands.SendUDPPacket;
-import org.usfirst.frc.team4729.robot.commands.Shoot;
+import org.usfirst.frc.team4729.robot.commands.PreFire;
 import org.usfirst.frc.team4729.robot.commands.TwoStickArcade;
 import org.usfirst.frc.team4729.robot.commands.TwoStickTank;
 //import org.usfirst.frc.team4729.robot.subsystems.Intake;
@@ -82,7 +82,7 @@ public class OI {
     	//button9.whileHeld ();
     	//button10.whileHeld ();
     	//button11.whileHeld ();
-    	rightButton1.whileHeld (new Shoot());
+    	rightButton1.whileHeld (new PreFire());
     	rightButton2.whileHeld (new PreIntake());
     	rightButton3.whileHeld(new Flip());
     	//rightButton4.whileHeld ();
@@ -95,7 +95,7 @@ public class OI {
     	//rightButton11.whileHeld ();
     	//a.whileHeld ();
     	b.whileHeld (new Intake());
-    	x.whileHeld (new Shoot());
+    	x.whileHeld (new PreFire());
     	y.whileHeld (new Climb(xbox));
     	//lb.whileHeld ();
     	//rb.whileHeld ();

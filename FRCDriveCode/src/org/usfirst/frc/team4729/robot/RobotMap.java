@@ -10,10 +10,12 @@ public class RobotMap {
 	//Motor Maps
 	public static int LEFT_DRIVE = 0;
 	public static int RIGHT_DRIVE = 1;
-	public static int INTAKE = 3;
-	public static int CLIMBER = 4;
-	public static int PRELOADER = 5;
-	public static int SHOOTER = 6;
+	public static int INTAKE = 2;
+	public static int CLIMBER = 3;
+	public static int PRELOADER_LEFT = 4;
+	public static int PRELOADER_RIGHT = 5;
+	public static int SHOOTER_LEFT = 7;
+	public static int SHOOTER_RIGHT = 8;
 	
 	//Sensors
 	public static int ENCODER_LEFT_A = 0;

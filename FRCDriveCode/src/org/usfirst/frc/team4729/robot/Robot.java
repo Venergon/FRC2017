@@ -35,9 +35,11 @@ public class Robot extends IterativeRobot {
 	public static int BLUE;
 	public static int RED;
 	
+	public static SendableChooser<String> teamChooser;
+	public static String team;
 	
 	public static SendableChooser<String> autoChooser;
-	public static boolean autoMode;
+	public static String autoMode;
 	
 	public static SendableChooser<String> nucConnectedChooser;
 	public static String nucConnected;
@@ -61,13 +63,15 @@ public class Robot extends IterativeRobot {
 		BLUE = 0;
 		RED = 1;
 		
+		teamChooser = new SendableChooser<String>();
+		teamChooser.addDefault("Red", "red");
+		teamChooser.addDefault("Blue", "blue");
+		
 		autoChooser = new SendableChooser<String>();
 		autoChooser.addDefault("Shoot, then move to hopper", "shoot_then_hopper");
 		autoChooser.addObject("Smash that hopper, then shoot", "hopper_then_shoot");
 		autoChooser.addObject("Just go to the hopper", "just_hopper");
 		SmartDashboard.putData("automode", autoChooser);
-		
-		
 		
 		nucConnectedChooser = new SendableChooser<String>();
 		nucConnectedChooser.addDefault("Yes", "yes");
@@ -81,8 +85,9 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-    	String notBasic = (String) autoChooser.getSelected();
-    	autonomousCommand = new AutonomousGroup(notBasic);
+    	String mode = (String) autoChooser.getSelected();
+    	String team = (String) teamChooser.getSelected();
+    	autonomousCommand = new AutonomousGroup(mode,team);
     	nucConnected = (String) nucConnectedChooser.getSelected();
     	SmartDashboard.putString("nucConnected", nucConnected);
     	tcpSubsystem = new TCPSubsystem(1917);
