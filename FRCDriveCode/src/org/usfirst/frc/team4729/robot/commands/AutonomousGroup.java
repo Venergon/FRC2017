@@ -13,16 +13,22 @@ public class AutonomousGroup extends CommandGroup {
     		addSequential(new PreFire());
     		addSequential(new WaitAfterPreFire());
     		addSequential(new AutoShoot());
-	    	addSequential(new BasicAutoMoveToHopperWithoutGyro(team, false));
+	    	addSequential(new BasicAutoMoveToHopper(team, false));
+	    	addSequential(new AutoCrossLine(team));
     	} else if (mode.equals("hopper_then_shoot")) {
     		addSequential(new PreFire());
     		addSequential(new WaitAfterPreFire());
-			addSequential(new BasicAutoMoveToHopperWithoutGyro(team, true));
-			addSequential(new SmashHopper());
-			addSequential(new AutoTurnToBoiler());
+			addSequential(new BasicAutoMoveToHopper(team, true));
+			addSequential(new AutoSmashHopper());
+			if (team == "red") {
+				addSequential(new AutoTurnToBoilerRed(team));
+			} else {
+				addSequential(new AutoTurnToBoilerBlue(team));
+			}
 			addSequential(new AutoShoot());
     	} else if (mode.equals("just_hopper")) {
-    		addSequential(new BasicAutoMoveToHopperWithoutGyro(team, true));
+    		addSequential(new BasicAutoMoveToHopper(team, true));
+    		addSequential(new AutoCrossLine(team));
     	}
       // Add Commands here:
       // e.g. addSequential(new Command1());

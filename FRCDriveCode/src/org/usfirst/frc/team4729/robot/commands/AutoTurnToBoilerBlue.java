@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoTurnToBoilerRed extends Command {
+public class AutoTurnToBoilerBlue extends Command {
 
     double TOO_FAR;
     double TOO_CLOSE;
@@ -15,7 +15,7 @@ public class AutoTurnToBoilerRed extends Command {
 
     String team;
 
-    public AutoTurnToBoilerRed(String teamColour) {
+    public AutoTurnToBoilerBlue(String teamColour) {
     	TOO_FAR = 10;
     	TOO_CLOSE = 10;
     	CAMERA_WIDTH = 10;
@@ -56,7 +56,7 @@ public class AutoTurnToBoilerRed extends Command {
             ifFinished = true;
           }
         } else { //if not in center
-          if (iamx > center+1) { //if facing left
+          if (iamx < center+1) { //if facing left
             Robot.driveSubsystem.arcade(0,1);
           } else { //if facing right
             Robot.driveSubsystem.arcade(0,-1);

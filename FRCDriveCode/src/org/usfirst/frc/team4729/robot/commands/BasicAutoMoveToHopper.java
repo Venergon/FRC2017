@@ -18,16 +18,21 @@ public class BasicAutoMoveToHopper extends Command {
 	Timer timer;
 
 	boolean done;
+	boolean straight;
+	
+	String team;	
 
 	float TIME_MOVE_BACK;
 	float TIME_TO_HOPPER;
 	int ANGLE_TO_HOPPER;
 
-    public BasicAutoMoveToHopper() {
+    public BasicAutoMoveToHopper(String teamColour, boolean isStraight) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
     	done = false;
+    	straight = isStraight;
+    	team = teamColour;
 
     	TIME_MOVE_BACK = 1; // Change this
     	TIME_TO_HOPPER = 3; // Change this
@@ -44,18 +49,28 @@ public class BasicAutoMoveToHopper extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		while (timer.get() < TIME_MOVE_BACK) {
-			Robot.driveSubsystem.tank(-1,-1);
-		}
-		while (Math.abs(gyro.getAngle()-0) < 10) {
-    		Robot.driveSubsystem.tank(1, 0.5);
-		}
-		timer.reset();
+    	if (!straight) {
+			while (timer.get() < TIME_MOVE_BACK) {
+				Robot.driveSubsystem.tank(-1,-1);
+			}
+			while (Math.abs(gyro.getAngle()-0) < 10) {
+				if (team == "red") {
+					Robot.driveSubsystem.tank(1, 0.5);
+				} else {
+					Robot.driveSubsystem.tank(0.5, 1);
+				}
+			}
+			timer.reset();
+    	}
   		while (timer.get() < TIME_TO_HOPPER) {
   			Robot.driveSubsystem.tank(1, 1);
 		}
   		while (Math.abs(gyro.getAngle()-ANGLE_TO_HOPPER) > 10) {
-    		Robot.driveSubsystem.tank(-1, 1);
+  			if (team == "red") {
+  				Robot.driveSubsystem.tank(-1, 1);
+  			} else {
+  				Robot.driveSubsystem.tank(1, -1);
+  			}
     	}
 		Robot.driveSubsystem.tank(0, 0);
 		done = true;

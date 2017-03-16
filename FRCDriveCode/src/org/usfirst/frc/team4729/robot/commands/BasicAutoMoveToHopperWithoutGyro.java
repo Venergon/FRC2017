@@ -32,6 +32,7 @@ public class BasicAutoMoveToHopperWithoutGyro extends Command {
     	
     	done = false;
     	straight = isStraight;
+    	team = teamColour;
 
     	TIME_MOVE_BACK = 1; // Change this
     	TIME_TO_HOPPER = 3; // Change this
@@ -53,7 +54,11 @@ public class BasicAutoMoveToHopperWithoutGyro extends Command {
 			}
 			timer.reset();
 			while (timer.get() < TIME_TO_CURVE) {
-	    		Robot.driveSubsystem.tank(1, 0.5);
+				if (team == "red") {
+					Robot.driveSubsystem.tank(1, 0.5);
+				} else {
+					Robot.driveSubsystem.tank(0.5, 1);
+				}
 			}
     	}
 		timer.reset();
