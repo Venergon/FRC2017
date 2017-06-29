@@ -3,6 +3,7 @@ package org.usfirst.frc.team4729.robot.commands;
 import org.usfirst.frc.team4729.robot.Robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -12,10 +13,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TwoStickTank extends Command {
 	Joystick leftStick;
 	Joystick rightStick;
+	
     public TwoStickTank(Joystick leftStick, Joystick rightStick) {
     	requires(Robot.driveSubsystem);
     	this.leftStick = leftStick;
     	this.rightStick = rightStick;
+    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

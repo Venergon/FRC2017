@@ -3,6 +3,9 @@ package org.usfirst.frc.team4729.robot.subsystems;
 import org.usfirst.frc.team4729.robot.Robot;
 import org.usfirst.frc.team4729.robot.RobotMap;
 
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
+
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -15,7 +18,10 @@ public class DriveSubsystem extends Subsystem {
     // here. Call these from Commands.
     Encoder leftEncoder;
     Encoder rightEncoder;
-    RobotDrive driveTrain = new RobotDrive(RobotMap.LEFT_DRIVE, RobotMap.RIGHT_DRIVE);
+    CANTalon driveTrainLeftFront = new CANTalon(RobotMap.LEFT_FRONT_DRIVE);
+    CANTalon driveTrainLeftBack = new CANTalon(RobotMap.LEFT_BACK_DRIVE);
+    CANTalon driveTrainRightFront = new CANTalon(RobotMap.RIGHT_FRONT_DRIVE);
+    CANTalon driveTrainRightBack = new CANTalon(RobotMap.RIGHT_BACK_DRIVE);
     public AnalogGyro gyro;
 
 	double leftSpeed = 0;
@@ -35,6 +41,10 @@ public class DriveSubsystem extends Subsystem {
     	gyro = new AnalogGyro(RobotMap.GYRO);
     	gyro.calibrate();
 
+    	driveTrainLeftFront.changeControlMode(TalonControlMode.PercentVbus);
+    	driveTrainLeftBack.changeControlMode(TalonControlMode.PercentVbus);
+    	driveTrainRightFront.changeControlMode(TalonControlMode.PercentVbus);
+    	driveTrainRightBack.changeControlMode(TalonControlMode.PercentVbus);
         leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_A, RobotMap.ENCODER_LEFT_B, false, Encoder.EncodingType.k4X);
         rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_A, RobotMap.ENCODER_RIGHT_B, false, Encoder.EncodingType.k4X);
 
@@ -79,9 +89,15 @@ public class DriveSubsystem extends Subsystem {
     	}
     	
     	if (Robot.flipped) {
-    		driveTrain.arcadeDrive(-moveFinal, -turnFinal);
+    		driveTrainLeftFront.set(-moveFinal + -turnFinal);
+    		driveTrainLeftBack.set(-moveFinal + -turnFinal);
+    		driveTrainRightFront.set(-moveFinal - (-turnFinal));
+    		driveTrainRightBack.set(-moveFinal - (-turnFinal));
     	} else {
-    		driveTrain.arcadeDrive(moveFinal, -turnFinal);
+    		driveTrainLeftFront.set(moveFinal + -turnFinal);
+    		driveTrainLeftBack.set(moveFinal + -turnFinal);
+    		driveTrainRightFront.set(moveFinal - (-turnFinal));
+    		driveTrainRightBack.set(moveFinal - (-turnFinal));
     	}
     }
       
@@ -105,9 +121,15 @@ public class DriveSubsystem extends Subsystem {
     	}
     	
     	if (Robot.flipped) {
-    		driveTrain.tankDrive(-leftFinal, -rightFinal);
+    		driveTrainLeftFront.set(-leftFinal);
+    		driveTrainLeftBack.set(-leftFinal);
+    		driveTrainRightFront.set(-rightFinal);
+    		driveTrainRightBack.set(-rightFinal);
     	} else {
-    		driveTrain.tankDrive(rightFinal, leftFinal);
+    		driveTrainLeftFront.set(rightFinal);
+    		driveTrainLeftBack.set(rightFinal);
+    		driveTrainRightFront.set(leftFinal);
+    		driveTrainRightBack.set(leftFinal);
     	}
 	}
 }

@@ -2,6 +2,8 @@ package org.usfirst.frc.team4729.robot.subsystems;
 
 import org.usfirst.frc.team4729.robot.RobotMap;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -13,7 +15,7 @@ public class ClimbSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	Talon climber = new Talon(RobotMap.CLIMBER);
+	CANTalon climber = new CANTalon(RobotMap.CLIMBER);
 	public boolean slow = false;
 
     public void initDefaultCommand() {

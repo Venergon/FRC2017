@@ -26,7 +26,7 @@ public class AutonomousCommand extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	alliance = colour;
-    	driveTrain = new RobotDrive(RobotMap.LEFT_DRIVE, RobotMap.RIGHT_DRIVE);
+    	driveTrain = new RobotDrive(RobotMap.LEFT_FRONT_DRIVE, RobotMap.RIGHT_FRONT_DRIVE);
     	leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_A, RobotMap.ENCODER_LEFT_B, false, Encoder.EncodingType.k4X);
     	rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_A, RobotMap.ENCODER_RIGHT_B, false, Encoder.EncodingType.k4X);
     	

@@ -8,14 +8,16 @@ package org.usfirst.frc.team4729.robot;
  */
 public class RobotMap {
 	//Motor Maps
-	public static int LEFT_DRIVE = 0;
-	public static int RIGHT_DRIVE = 1;
-	public static int INTAKE = 2;
-	public static int CLIMBER = 3;
-	public static int PRELOADER_LEFT = 4;
-	public static int PRELOADER_RIGHT = 5;
-	public static int SHOOTER_LEFT = 7;
-	public static int SHOOTER_RIGHT = 8;
+	public static int LEFT_FRONT_DRIVE = 1;
+	public static int LEFT_BACK_DRIVE = 2;
+	public static int RIGHT_FRONT_DRIVE = 3;
+	public static int RIGHT_BACK_DRIVE = 4;
+	public static int INTAKE = 5;
+	public static int CLIMBER = 6;
+	public static int PRELOADER_LEFT = 7;
+	public static int PRELOADER_RIGHT = 8;
+	public static int SHOOTER_LEFT = 9;
+	public static int SHOOTER_RIGHT = 10;
 	
 	//Sensors
 	public static int ENCODER_LEFT_A = 0;
