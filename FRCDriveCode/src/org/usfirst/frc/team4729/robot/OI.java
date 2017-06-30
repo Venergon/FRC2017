@@ -76,7 +76,8 @@ public class OI {
     Button wheelButton4 = new JoystickButton(steiringWheel, 4); //might need
 
     public OI() {
-    	button1.whileHeld  (new Intake());
+    	button1.whileHeld (new Climb(leftStick));
+    	//button1.whileHeld  (new Intake());
     	button2.whenPressed (new OneStickTank(leftStick));
     	button3.whenPressed (new TwoStickTank(leftStick, rightStick));
     	button4.whenPressed (new OneStickArcade(leftStick));

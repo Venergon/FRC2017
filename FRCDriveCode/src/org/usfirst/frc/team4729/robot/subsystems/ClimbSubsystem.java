@@ -4,6 +4,7 @@ import org.usfirst.frc.team4729.robot.RobotMap;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -15,7 +16,7 @@ public class ClimbSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	CANTalon climber = new CANTalon(RobotMap.CLIMBER);
+    Spark climber = new Spark(RobotMap.CLIMBER);
 	public boolean slow = false;
 
     public void initDefaultCommand() {

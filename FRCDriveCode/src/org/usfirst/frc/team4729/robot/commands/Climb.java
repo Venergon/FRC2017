@@ -23,7 +23,7 @@ public class Climb extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.climbSubsystem.climb(xbox.getRawAxis(3));
+    	Robot.climbSubsystem.climb(1);//xbox.getRawAxis(3));
     }
 
     // Make this return true when this Command no longer needs to run execute()

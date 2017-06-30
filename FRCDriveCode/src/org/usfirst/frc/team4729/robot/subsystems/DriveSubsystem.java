@@ -88,14 +88,17 @@ public class DriveSubsystem extends Subsystem {
     		turnFinal = 0;
     	}
     	
+    	moveFinal = moveSpeed;
+    	turnFinal = turnSpeed;
+    	
     	if (Robot.flipped) {
-    		driveTrainLeftFront.set(-moveFinal + -turnFinal);
-    		driveTrainLeftBack.set(-moveFinal + -turnFinal);
+    		driveTrainLeftFront.set(moveFinal + -turnFinal);
+    		driveTrainLeftBack.set(moveFinal + -turnFinal);
     		driveTrainRightFront.set(-moveFinal - (-turnFinal));
     		driveTrainRightBack.set(-moveFinal - (-turnFinal));
     	} else {
-    		driveTrainLeftFront.set(moveFinal + -turnFinal);
-    		driveTrainLeftBack.set(moveFinal + -turnFinal);
+    		driveTrainLeftFront.set(-moveFinal + turnFinal);
+    		driveTrainLeftBack.set(-moveFinal + turnFinal);
     		driveTrainRightFront.set(moveFinal - (-turnFinal));
     		driveTrainRightBack.set(moveFinal - (-turnFinal));
     	}
@@ -121,13 +124,13 @@ public class DriveSubsystem extends Subsystem {
     	}
     	
     	if (Robot.flipped) {
-    		driveTrainLeftFront.set(-leftFinal);
-    		driveTrainLeftBack.set(-leftFinal);
+    		driveTrainLeftFront.set(leftFinal);
+    		driveTrainLeftBack.set(leftFinal);
     		driveTrainRightFront.set(-rightFinal);
     		driveTrainRightBack.set(-rightFinal);
     	} else {
-    		driveTrainLeftFront.set(rightFinal);
-    		driveTrainLeftBack.set(rightFinal);
+    		driveTrainLeftFront.set(-rightFinal);
+    		driveTrainLeftBack.set(-rightFinal);
     		driveTrainRightFront.set(leftFinal);
     		driveTrainRightBack.set(leftFinal);
     	}
